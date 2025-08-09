@@ -1,21 +1,17 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Excel Training — From Basics to Advanced</title>
 
-  <!-- Reveal.js core styles -->
+  <!-- Reveal.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/seriph.css" id="theme" />
 
   <style>
     body {
-      background-color: #121212; /* dark background */
-      color: #eee;
-    }
-    /* Optional: style for your html tags in markdown */
-    h1, h2, h3, p, ul, li {
+      background-color: #121212;
       color: #eee;
     }
   </style>
@@ -127,19 +123,298 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
         </textarea>
       </section>
 
-      <!-- Continue similarly for all other slides... -->
+      <!-- Slide 6 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🗂 Data Management Tools
 
-      <!-- Example: last slide -->
+**Step 1 — Sort** <!-- .element: .fragment -->  
+- Data → Sort A-Z / Z-A <!-- .element: .fragment -->
 
+**Step 2 — Filter**  
+- Data → Filter → Dropdown arrows <!-- .element: .fragment -->
+
+**Step 3 — Find & Replace**  
+- <kbd>Ctrl</kbd> + <kbd>H</kbd> <!-- .element: .fragment -->
+
+**Step 4 — Data Validation**  
+- Data → Data Validation → Dropdown list <!-- .element: .fragment -->
+
+📷 *[Screenshot: Sort/Filter menu]*
+        </textarea>
+      </section>
+
+      <!-- Slide 7 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🟡 **SECTION 2 — INTERMEDIATE EXCEL**
+### 🧩 Formulas • Charts • PivotTables
+        </textarea>
+      </section>
+
+      <!-- Slide 8 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🧩 Intermediate Formulas
+
+**Step 1 — Text Functions** <!-- .element: .fragment -->  
+- =LEFT(A1,4) — First 4 chars <!-- .element: .fragment -->
+- =RIGHT(A1,3) — Last 3 chars <!-- .element: .fragment -->
+- =MID(A1,3,5) — From 3rd position <!-- .element: .fragment -->
+
+**Step 2 — Logical**  
+- =IF(A2>100,"Pass","Fail") <!-- .element: .fragment -->
+
+**Step 3 — Lookup**  
+- =VLOOKUP("Apple",A2:C10,2,FALSE) <!-- .element: .fragment -->
+- =XLOOKUP("Apple",A2:A10,B2:B10) <!-- .element: .fragment -->
+
+📷 *[Screenshot: Formula example]*
+        </textarea>
+      </section>
+
+      <!-- Slide 9 -->
+      <section data-markdown>
+        <textarea data-template>
+# 📊 Charts & Visualization
+
+**Step 1 — Select Data** <!-- .element: .fragment -->  
+- Highlight table <!-- .element: .fragment -->
+
+**Step 2 — Insert Chart**  
+- Insert → Choose type <!-- .element: .fragment -->
+
+**Step 3 — Format Chart**  
+- Add titles, labels, legends <!-- .element: .fragment -->
+
+**Step 4 — Conditional Formatting**  
+- Home → Conditional Formatting → Set rules <!-- .element: .fragment -->
+
+📷 *[Screenshot: Chart example]*
+        </textarea>
+      </section>
+
+      <!-- Slide 10 -->
+      <section data-markdown>
+        <textarea data-template>
+# 📈 PivotTables & PivotCharts
+
+**Step 1 — Create** <!-- .element: .fragment -->  
+- Insert → PivotTable <!-- .element: .fragment -->
+
+**Step 2 — Build**  
+- Drag to Rows, Columns, Values, Filters <!-- .element: .fragment -->
+
+**Step 3 — PivotChart**  
+- Analyze → PivotChart <!-- .element: .fragment -->
+
+**Step 4 — Group**  
+- By Month, Year, Category <!-- .element: .fragment -->
+
+📷 *[Screenshot: PivotTable example]*
+        </textarea>
+      </section>
+
+      <!-- Slide 11 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🔵 **SECTION 3 — ADVANCED EXCEL**
+### 🧠 Power Formulas • Macros • Automation
+        </textarea>
+      </section>
+
+      <!-- Slide 12 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🧠 Advanced Formulas
+
+**Step 1 — INDEX & MATCH** <!-- .element: .fragment -->  
+- =INDEX(B2:B10, MATCH("Product A",A2:A10,0)) <!-- .element: .fragment -->
+
+**Step 2 — INDIRECT**  
+- =INDIRECT("B"&5) <!-- .element: .fragment -->
+
+**Step 3 — OFFSET**  
+- =OFFSET(A1,1,2) <!-- .element: .fragment -->
+
+**Step 4 — Array**  
+- {=A1:A3*B1:B3} <!-- .element: .fragment -->
+
+📷 *[Screenshot: INDEX & MATCH]*
+        </textarea>
+      </section>
+
+      <!-- Slide 13 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🤖 Macros & VBA Basics
+
+**Step 1 — Record** <!-- .element: .fragment -->  
+- View → Macros → Record <!-- .element: .fragment -->
+
+**Step 2 — Perform**  
+- Format → Stop Recording <!-- .element: .fragment -->
+
+**Step 3 — Run**  
+- View → Macros → Run <!-- .element: .fragment -->
+
+**Step 4 — VBA Editor**  
+- <kbd>Alt</kbd> + <kbd>F11</kbd> <!-- .element: .fragment -->
+
+📷 *[Screenshot: Macro Recorder]*
+        </textarea>
+      </section>
+
+      <!-- Slide 14 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🔍 Power Query & Data Analysis
+
+**Step 1 — Open** <!-- .element: .fragment -->  
+- Data → Get & Transform <!-- .element: .fragment -->
+
+**Step 2 — Clean**  
+- Remove duplicates, fix data types <!-- .element: .fragment -->
+
+**Step 3 — Merge**  
+- Merge Queries <!-- .element: .fragment -->
+
+**Step 4 — What-If**  
+- Scenario Manager / Goal Seek <!-- .element: .fragment -->
+
+📷 *[Screenshot: Power Query Editor]*
+        </textarea>
+      </section>
+
+      <!-- Slide 15 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🟣 **SECTION 4 — PRODUCTIVITY BOOSTERS**
+### ⚡ Shortcuts • Tricks • Data Cleaning
+        </textarea>
+      </section>
+
+      <!-- Slide 16 -->
+      <section data-markdown>
+        <textarea data-template>
+# 💡 Tips & Shortcuts
+
+**Shortcuts**  
+- Copy/Paste → <kbd>Ctrl</kbd>+<kbd>C</kbd>/<kbd>V</kbd>
+- Undo → <kbd>Ctrl</kbd>+<kbd>Z</kbd>
+- Select All → <kbd>Ctrl</kbd>+<kbd>A</kbd>
+
+**Speed Tricks**  
+- AutoSum → <kbd>Alt</kbd>+<kbd>=</kbd>
+- Fill Series → Drag fill handle
+- Freeze Panes → View → Freeze Panes
+- Hide Columns → Right-click → Hide
+
+📷 *[Screenshot: Shortcut keys]*
+        </textarea>
+      </section>
+
+      <!-- Slide 17 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🧹 Data Cleaning
+
+**Step 1 — Remove Blank Rows**  
+- Filter → Blanks → Delete
+
+**Step 2 — Remove Duplicates**  
+- Data → Remove Duplicates
+
+**Step 3 — Text to Columns**  
+- Split by comma/space
+
+**Step 4 — Trim Spaces**  
+- =TRIM(A1)
+
+📷 *[Screenshot: Remove Duplicates dialog]*
+        </textarea>
+      </section>
+
+      <!-- Slide 18 -->
+      <section data-markdown>
+        <textarea data-template>
+# 💪 **SECTION 5 — PRACTICE & QUIZ**
+        </textarea>
+      </section>
+
+      <!-- Slide 19 -->
+      <section data-markdown>
+        <textarea data-template>
+# 🏋 Practice Exercise 1 — Basics
+**Task:** Format headers, apply currency, create a bar chart
+        </textarea>
+      </section>
+
+      <!-- Slide 20 -->
+      <section data-markdown>
+        <textarea data-template>
+# 📐 Practice Exercise 2 — Formulas
+**Task:** SUM, AVERAGE, IF, Conditional Formatting
+        </textarea>
+      </section>
+
+      <!-- Slide 21 -->
+      <section data-markdown>
+        <textarea data-template>
+# 📊 Practice Exercise 3 — PivotTables
+**Task:** Create PivotTable & PivotChart
+        </textarea>
+      </section>
+
+      <!-- Slide 22 -->
+      <section data-markdown>
+        <textarea data-template>
+# 📝 Quiz Time
+
+- What does VLOOKUP do?  
+- How to freeze top row?  
+- Shortcut for AutoSum?  
+- Function to remove extra spaces?
+        </textarea>
+      </section>
+
+      <!-- Slide 23 -->
+      <section data-markdown>
+        <textarea data-template>
+# ⚠ Common Excel Mistakes
+
+- Not saving often  
+- Numbers stored as text  
+- Not naming ranges  
+- Forgetting $ in formulas  
+- Overcomplicating formulas  
+
+📷 *[Formula error example]*
+        </textarea>
+      </section>
+
+      <!-- Slide 24 -->
+      <section data-markdown>
+        <textarea data-template>
+# 📚 Resources
+
+- Microsoft Excel Help → <kbd>F1</kbd>  
+- ExcelJet.net — Formula examples  
+- MrExcel.com — Forum  
+- YouTube — ExcelIsFun, Leila Gharani
+        </textarea>
+      </section>
+
+      <!-- Slide 25 -->
       <section data-markdown>
         <textarea data-template>
 # 🎉 Thank You! 🙏
 
-✅ Basics → Advanced <!-- .element: .fragment -->
-✅ Practice Completed ✔️ <!-- .element: .fragment -->
-✅ Ready for real-world Excel <!-- .element: .fragment -->
+✅ Basics → Advanced  
+✅ Practice Completed ✔️  
+✅ Ready for real-world Excel  
 
-📌 *Keep practicing & exploring!* <!-- .element: .fragment -->
+📌 *Keep practicing & exploring!*  
 
 By : Chandra Sekar Singh  
 Email : singhsekar097@gmail.com  
@@ -150,9 +425,9 @@ GitHub : https://github.com/Singh097
     </div>
   </div>
 
-  <!-- Reveal.js and Markdown plugin scripts -->
+  <!-- Reveal.js core and markdown plugin -->
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/markdown/markdown.esm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/markdown/markdown.js"></script>
 
   <script>
     Reveal.initialize({
@@ -169,5 +444,3 @@ GitHub : https://github.com/Singh097
 
 </body>
 </html>
-
-
