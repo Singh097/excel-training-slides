@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,9 +10,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/seriph.css" id="theme" />
 
   <style>
-    body {
+    /* Dark background override */
+    .reveal {
       background-color: #121212;
+    }
+    .reveal .slides section {
       color: #eee;
+    }
+    kbd {
+      background: #222;
+      border-radius: 3px;
+      padding: 2px 6px;
+      font-size: 0.85em;
+      font-family: monospace;
+      box-shadow: inset 0 -1px 0 #000;
     }
   </style>
 </head>
@@ -299,16 +310,16 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
         <textarea data-template>
 # 💡 Tips & Shortcuts
 
-**Shortcuts**  
-- Copy/Paste → <kbd>Ctrl</kbd>+<kbd>C</kbd>/<kbd>V</kbd>
-- Undo → <kbd>Ctrl</kbd>+<kbd>Z</kbd>
-- Select All → <kbd>Ctrl</kbd>+<kbd>A</kbd>
+**Shortcuts** <!-- .element: .fragment -->  
+- Copy/Paste → <kbd>Ctrl</kbd>+<kbd>C</kbd>/<kbd>V</kbd> <!-- .element: .fragment -->
+- Undo → <kbd>Ctrl</kbd>+<kbd>Z</kbd> <!-- .element: .fragment -->
+- Select All → <kbd>Ctrl</kbd>+<kbd>A</kbd> <!-- .element: .fragment -->
 
 **Speed Tricks**  
-- AutoSum → <kbd>Alt</kbd>+<kbd>=</kbd>
-- Fill Series → Drag fill handle
-- Freeze Panes → View → Freeze Panes
-- Hide Columns → Right-click → Hide
+- AutoSum → <kbd>Alt</kbd>+<kbd>=</kbd> <!-- .element: .fragment -->
+- Fill Series → Drag fill handle <!-- .element: .fragment -->
+- Freeze Panes → View → Freeze Panes <!-- .element: .fragment -->
+- Hide Columns → Right-click → Hide <!-- .element: .fragment -->
 
 📷 *[Screenshot: Shortcut keys]*
         </textarea>
@@ -319,17 +330,17 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
         <textarea data-template>
 # 🧹 Data Cleaning
 
-**Step 1 — Remove Blank Rows**  
-- Filter → Blanks → Delete
+**Step 1 — Remove Blank Rows** <!-- .element: .fragment -->  
+- Filter → Blanks → Delete <!-- .element: .fragment -->
 
 **Step 2 — Remove Duplicates**  
-- Data → Remove Duplicates
+- Data → Remove Duplicates <!-- .element: .fragment -->
 
 **Step 3 — Text to Columns**  
-- Split by comma/space
+- Split by comma/space <!-- .element: .fragment -->
 
 **Step 4 — Trim Spaces**  
-- =TRIM(A1)
+- =TRIM(A1) <!-- .element: .fragment -->
 
 📷 *[Screenshot: Remove Duplicates dialog]*
         </textarea>
@@ -346,7 +357,7 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
       <section data-markdown>
         <textarea data-template>
 # 🏋 Practice Exercise 1 — Basics
-**Task:** Format headers, apply currency, create a bar chart
+**Task:** Format headers, apply currency, create a bar chart <!-- .element: .fragment -->
         </textarea>
       </section>
 
@@ -354,7 +365,7 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
       <section data-markdown>
         <textarea data-template>
 # 📐 Practice Exercise 2 — Formulas
-**Task:** SUM, AVERAGE, IF, Conditional Formatting
+**Task:** SUM, AVERAGE, IF, Conditional Formatting <!-- .element: .fragment -->
         </textarea>
       </section>
 
@@ -362,7 +373,7 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
       <section data-markdown>
         <textarea data-template>
 # 📊 Practice Exercise 3 — PivotTables
-**Task:** Create PivotTable & PivotChart
+**Task:** Create PivotTable & PivotChart <!-- .element: .fragment -->
         </textarea>
       </section>
 
@@ -371,10 +382,10 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
         <textarea data-template>
 # 📝 Quiz Time
 
-- What does VLOOKUP do?  
-- How to freeze top row?  
-- Shortcut for AutoSum?  
-- Function to remove extra spaces?
+- What does VLOOKUP do? <!-- .element: .fragment -->
+- How to freeze top row? <!-- .element: .fragment -->
+- Shortcut for AutoSum? <!-- .element: .fragment -->
+- Function to remove extra spaces? <!-- .element: .fragment -->
         </textarea>
       </section>
 
@@ -383,11 +394,11 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
         <textarea data-template>
 # ⚠ Common Excel Mistakes
 
-- Not saving often  
-- Numbers stored as text  
-- Not naming ranges  
-- Forgetting $ in formulas  
-- Overcomplicating formulas  
+- Not saving often <!-- .element: .fragment -->
+- Numbers stored as text <!-- .element: .fragment -->
+- Not naming ranges <!-- .element: .fragment -->
+- Forgetting $ in formulas <!-- .element: .fragment -->
+- Overcomplicating formulas <!-- .element: .fragment -->
 
 📷 *[Formula error example]*
         </textarea>
@@ -398,10 +409,10 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
         <textarea data-template>
 # 📚 Resources
 
-- Microsoft Excel Help → <kbd>F1</kbd>  
-- ExcelJet.net — Formula examples  
-- MrExcel.com — Forum  
-- YouTube — ExcelIsFun, Leila Gharani
+- Microsoft Excel Help → <kbd>F1</kbd> <!-- .element: .fragment -->
+- ExcelJet.net — Formula examples <!-- .element: .fragment -->
+- MrExcel.com — Forum <!-- .element: .fragment -->
+- YouTube — ExcelIsFun, Leila Gharani <!-- .element: .fragment -->
         </textarea>
       </section>
 
@@ -410,11 +421,11 @@ Microsoft Excel is a spreadsheet program to store, organize, and analyze data.
         <textarea data-template>
 # 🎉 Thank You! 🙏
 
-✅ Basics → Advanced  
-✅ Practice Completed ✔️  
-✅ Ready for real-world Excel  
+✅ Basics → Advanced <!-- .element: .fragment -->
+✅ Practice Completed ✔️ <!-- .element: .fragment -->
+✅ Ready for real-world Excel <!-- .element: .fragment -->
 
-📌 *Keep practicing & exploring!*  
+📌 *Keep practicing & exploring!* <!-- .element: .fragment -->
 
 By : Chandra Sekar Singh  
 Email : singhsekar097@gmail.com  
@@ -434,13 +445,14 @@ GitHub : https://github.com/Singh097
       hash: true,
       plugins: [ RevealMarkdown ],
       markdown: {
-        smartypants: true
+        smartypants: true,
       },
       transition: 'slide',
       backgroundTransition: 'fade',
-      theme: 'seriph',
     });
   </script>
 
 </body>
 </html>
+
+
