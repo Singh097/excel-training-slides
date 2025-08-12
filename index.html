@@ -1,389 +1,314 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Excel Training — From Basics to Advanced</title>
 
   <!-- Reveal.js CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/seriph.css" id="theme" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
 
   <style>
-    .reveal {
-      background-color: #121212;
-      color: #eee;
+    body {
+      background-color: #111;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
     }
-    kbd {
-      background: #222;
-      border-radius: 3px;
-      padding: 2px 6px;
-      font-size: 0.85em;
-      font-family: monospace;
-      box-shadow: inset 0 -1px 0 #000;
+    section h2, section h3 {
+      color: #00d4ff;
     }
-    a {
-      color: #79b8ff;
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    ul li {
+      background: rgba(255,255,255,0.08);
+      margin: 6px 0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 1.1em;
+    }
+    .title-slide {
+      background-image: url('https://cover.sli.dev');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-shadow: 2px 2px 5px black;
     }
   </style>
 </head>
 <body>
 
-  <div class="reveal">
-    <div class="slides">
+<div class="reveal">
+  <div class="slides">
 
-      <!-- Slide 1 -->
-      <section>
-        <h1 class="text-center">📊 Excel Training — From Basics to Advanced</h1>
-        <p>Master Excel Skills for Data Management, Analysis, and Automation</p>
-        <ul>
-          <li class="fragment">📈 Learn Excel step-by-step</li>
-          <li class="fragment">⚡ From basic formulas to advanced automation</li>
-          <li class="fragment">💼 Perfect for professionals, students, and analysts</li>
-        </ul>
-      </section>
+    <!-- Slide 1 - Title -->
+    <section class="title-slide">
+      <h1>Excel Training — From Basics to Advanced</h1>
+      <p>Learn Excel step-by-step — from basic formulas to advanced automation.</p>
+      <p><strong>Trainer:</strong> Chandra Sekar Singh</p>
+    </section>
 
-      <!-- Slide 2 -->
-      <section>
-        <h2>📅 Agenda</h2>
-        <ul>
-          <li class="fragment">📘 Introduction to Excel</li>
-          <li class="fragment">✏️ Basic Functions & Formatting</li>
-          <li class="fragment">🗂 Data Management Tools</li>
-          <li class="fragment">🧩 Intermediate Formulas</li>
-          <li class="fragment">📊 Charts & Visualization</li>
-          <li class="fragment">📈 PivotTables & PivotCharts</li>
-          <li class="fragment">🧠 Advanced Formulas</li>
-          <li class="fragment">🤖 Macros & VBA Basics</li>
-          <li class="fragment">🔍 Power Query & Data Analysis</li>
-          <li class="fragment">💡 Tips & Shortcuts</li>
-        </ul>
-        <p><em>We’ll explore each with clear examples & practice exercises.</em></p>
-      </section>
+    <!-- Slide 2 - Introduction -->
+    <section>
+      <h2>Welcome & Objectives</h2>
+      <ul>
+        <li class="fragment">Understand Excel’s core functions</li>
+        <li class="fragment">Master formulas & formatting</li>
+        <li class="fragment">Work with charts & pivot tables</li>
+        <li class="fragment">Explore data analysis & automation</li>
+      </ul>
+    </section>
 
-      <!-- Slide 3 -->
-      <section>
-        <h2>🟢 SECTION 1 — BASICS OF EXCEL</h2>
-        <h3>📘 Data Entry • Formatting • Essential Functions</h3>
-      </section>
+    <!-- Slide 3 - Excel Interface -->
+    <section>
+      <h2>Excel Interface Overview</h2>
+      <ul>
+        <li class="fragment">Ribbon</li>
+        <li class="fragment">Formula Bar</li>
+        <li class="fragment">Worksheet Tabs</li>
+        <li class="fragment">Status Bar</li>
+      </ul>
+    </section>
 
-      <!-- Slide 4 -->
-      <section>
-        <h2>📘 Introduction to Excel</h2>
-        <p><strong>Step 1 — What is Excel?</strong></p>
-        <p class="fragment">Microsoft Excel is a spreadsheet program to store, organize, and analyze data.</p>
+    <!-- Slide 4 -->
+    <section>
+      <h2>Basic Formatting</h2>
+      <ul>
+        <li class="fragment">Cell styles & fonts</li>
+        <li class="fragment">Borders & shading</li>
+        <li class="fragment">Number formatting</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 2 — Understanding the Interface</strong></p>
-        <ul>
-          <li class="fragment"><strong>Ribbon</strong> — Toolbar with tabs like Home, Insert, Page Layout</li>
-          <li class="fragment"><strong>Workbook</strong> — File containing sheets</li>
-          <li class="fragment"><strong>Worksheet</strong> — Single spreadsheet in a workbook</li>
-          <li class="fragment"><strong>Cells</strong> — Intersection of row & column (e.g., A1)</li>
-          <li class="fragment"><strong>Formula Bar</strong> — Where formulas are typed</li>
-        </ul>
-        <p class="fragment"><em>[Screenshot: Excel interface labeled]</em></p>
-        <p class="fragment"><strong>Tip:</strong> Save often — <kbd>Ctrl</kbd> + <kbd>S</kbd></p>
-      </section>
+    <!-- Slide 5 -->
+    <section>
+      <h2>Basic Formulas</h2>
+      <ul>
+        <li class="fragment">SUM()</li>
+        <li class="fragment">AVERAGE()</li>
+        <li class="fragment">MIN() & MAX()</li>
+        <li class="fragment">COUNT()</li>
+      </ul>
+    </section>
 
-      <!-- Slide 5 -->
-      <section>
-        <h2>✏️ Basic Functions & Formatting</h2>
-        <p><strong>Step 1 — Data Entry</strong></p>
-        <p class="fragment">Click cell → Type → Press <kbd>Enter</kbd></p>
+    <!-- Slide 6 -->
+    <section>
+      <h2>Cell Referencing</h2>
+      <ul>
+        <li class="fragment">Relative references</li>
+        <li class="fragment">Absolute references ($A$1)</li>
+        <li class="fragment">Mixed references</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 2 — Formatting</strong></p>
-        <ul>
-          <li class="fragment">Home → Font → Change style, color, size</li>
-          <li class="fragment">Use Borders & Fill Color for emphasis</li>
-        </ul>
+    <!-- Slide 7 -->
+    <section>
+      <h2>Data Sorting & Filtering</h2>
+      <ul>
+        <li class="fragment">Sort ascending/descending</li>
+        <li class="fragment">Custom sort</li>
+        <li class="fragment">AutoFilter</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 3 — Number Formats</strong></p>
-        <ul>
-          <li class="fragment">Currency 💲 • Percentage % • Date 📅</li>
-        </ul>
+    <!-- Slide 8 -->
+    <section>
+      <h2>Conditional Formatting</h2>
+      <ul>
+        <li class="fragment">Highlight cells rules</li>
+        <li class="fragment">Data bars & color scales</li>
+        <li class="fragment">Custom formulas</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 4 — Basic Functions</strong></p>
-        <ul>
-          <li class="fragment"><code>=SUM(A1:A10)</code> ➕ Add values</li>
-          <li class="fragment"><code>=AVERAGE(A1:A10)</code> 📊 Mean</li>
-          <li class="fragment"><code>=MIN(A1:A10)</code> / <code>=MAX(A1:A10)</code> 🔻🔺</li>
-        </ul>
-        <p class="fragment"><em>[Screenshot: Formatting toolbar]</em></p>
-      </section>
+    <!-- Slide 9 -->
+    <section>
+      <h2>Charts in Excel</h2>
+      <ul>
+        <li class="fragment">Column charts</li>
+        <li class="fragment">Line charts</li>
+        <li class="fragment">Pie charts</li>
+        <li class="fragment">Combination charts</li>
+      </ul>
+    </section>
 
-      <!-- Slide 6 -->
-      <section>
-        <h2>🗂 Data Management Tools</h2>
-        <p><strong>Step 1 — Sort</strong></p>
-        <p class="fragment">Data → Sort A-Z / Z-A</p>
+    <!-- Slide 10 -->
+    <section>
+      <h2>Pivot Tables</h2>
+      <ul>
+        <li class="fragment">Creating pivot tables</li>
+        <li class="fragment">Grouping data</li>
+        <li class="fragment">Calculated fields</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 2 — Filter</strong></p>
-        <p class="fragment">Data → Filter → Dropdown arrows</p>
+    <!-- Slide 11 -->
+    <section>
+      <h2>Lookup Functions</h2>
+      <ul>
+        <li class="fragment">VLOOKUP()</li>
+        <li class="fragment">HLOOKUP()</li>
+        <li class="fragment">INDEX() & MATCH()</li>
+        <li class="fragment">XLOOKUP()</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 3 — Find & Replace</strong></p>
-        <p class="fragment"> <kbd>Ctrl</kbd> + <kbd>H</kbd></p>
+    <!-- Slide 12 -->
+    <section>
+      <h2>Text Functions</h2>
+      <ul>
+        <li class="fragment">LEFT(), RIGHT()</li>
+        <li class="fragment">MID()</li>
+        <li class="fragment">TRIM(), PROPER()</li>
+        <li class="fragment">CONCATENATE(), TEXTJOIN()</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 4 — Data Validation</strong></p>
-        <p class="fragment">Data → Data Validation → Dropdown list</p>
+    <!-- Slide 13 -->
+    <section>
+      <h2>Date & Time Functions</h2>
+      <ul>
+        <li class="fragment">TODAY(), NOW()</li>
+        <li class="fragment">DAY(), MONTH(), YEAR()</li>
+        <li class="fragment">DATEDIF()</li>
+      </ul>
+    </section>
 
-        <p class="fragment"><em>[Screenshot: Sort/Filter menu]</em></p>
-      </section>
+    <!-- Slide 14 -->
+    <section>
+      <h2>Logical Functions</h2>
+      <ul>
+        <li class="fragment">IF()</li>
+        <li class="fragment">IFERROR()</li>
+        <li class="fragment">AND(), OR()</li>
+      </ul>
+    </section>
 
-      <!-- Slide 7 -->
-      <section>
-        <h2>🟡 SECTION 2 — INTERMEDIATE EXCEL</h2>
-        <h3>🧩 Formulas • Charts • PivotTables</h3>
-      </section>
+    <!-- Slide 15 -->
+    <section>
+      <h2>Data Validation</h2>
+      <ul>
+        <li class="fragment">Drop-down lists</li>
+        <li class="fragment">Input messages</li>
+        <li class="fragment">Error alerts</li>
+      </ul>
+    </section>
 
-      <!-- Slide 8 -->
-      <section>
-        <h2>🧩 Intermediate Formulas</h2>
-        <p><strong>Step 1 — Text Functions</strong></p>
-        <ul>
-          <li class="fragment"><code>=LEFT(A1,4)</code> — First 4 chars</li>
-          <li class="fragment"><code>=RIGHT(A1,3)</code> — Last 3 chars</li>
-          <li class="fragment"><code>=MID(A1,3,5)</code> — From 3rd position</li>
-        </ul>
+    <!-- Slide 16 -->
+    <section>
+      <h2>Advanced Filtering</h2>
+      <ul>
+        <li class="fragment">Multiple criteria</li>
+        <li class="fragment">Copy to another location</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 2 — Logical</strong></p>
-        <p class="fragment"><code>=IF(A2>100,"Pass","Fail")</code></p>
+    <!-- Slide 17 -->
+    <section>
+      <h2>What-If Analysis</h2>
+      <ul>
+        <li class="fragment">Goal Seek</li>
+        <li class="fragment">Scenario Manager</li>
+        <li class="fragment">Data Tables</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 3 — Lookup</strong></p>
-        <ul>
-          <li class="fragment"><code>=VLOOKUP("Apple",A2:C10,2,FALSE)</code></li>
-          <li class="fragment"><code>=XLOOKUP("Apple",A2:A10,B2:B10)</code></li>
-        </ul>
-        <p class="fragment"><em>[Screenshot: Formula example]</em></p>
-      </section>
+    <!-- Slide 18 -->
+    <section>
+      <h2>Power Query</h2>
+      <ul>
+        <li class="fragment">Importing data</li>
+        <li class="fragment">Transforming data</li>
+        <li class="fragment">Merging & appending</li>
+      </ul>
+    </section>
 
-      <!-- Slide 9 -->
-      <section>
-        <h2>📊 Charts & Visualization</h2>
-        <p><strong>Step 1 — Select Data</strong></p>
-        <p class="fragment">Highlight table</p>
+    <!-- Slide 19 -->
+    <section>
+      <h2>Macros & VBA</h2>
+      <ul>
+        <li class="fragment">Recording macros</li>
+        <li class="fragment">Basic VBA editor</li>
+        <li class="fragment">Running macros</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 2 — Insert Chart</strong></p>
-        <p class="fragment">Insert → Choose type</p>
+    <!-- Slide 20 -->
+    <section>
+      <h2>Excel Shortcuts</h2>
+      <ul>
+        <li class="fragment">Ctrl + C / Ctrl + V</li>
+        <li class="fragment">Ctrl + Shift + L (Filter)</li>
+        <li class="fragment">Ctrl + ; (Date)</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 3 — Format Chart</strong></p>
-        <p class="fragment">Add titles, labels, legends</p>
+    <!-- Slide 21 -->
+    <section>
+      <h2>Collaboration</h2>
+      <ul>
+        <li class="fragment">Sharing workbooks</li>
+        <li class="fragment">Comments & notes</li>
+        <li class="fragment">Track changes</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 4 — Conditional Formatting</strong></p>
-        <p class="fragment">Home → Conditional Formatting → Set rules</p>
+    <!-- Slide 22 -->
+    <section>
+      <h2>Data Protection</h2>
+      <ul>
+        <li class="fragment">Protect sheets</li>
+        <li class="fragment">Password-protect workbooks</li>
+      </ul>
+    </section>
 
-        <p class="fragment"><em>[Screenshot: Chart example]</em></p>
-      </section>
+    <!-- Slide 23 -->
+    <section>
+      <h2>Common Errors</h2>
+      <ul>
+        <li class="fragment">#DIV/0!</li>
+        <li class="fragment">#N/A</li>
+        <li class="fragment">#REF!</li>
+      </ul>
+    </section>
 
-      <!-- Slide 10 -->
-      <section>
-        <h2>📈 PivotTables & PivotCharts</h2>
-        <p><strong>Step 1 — Create</strong></p>
-        <p class="fragment">Insert → PivotTable</p>
+    <!-- Slide 24 -->
+    <section>
+      <h2>Best Practices</h2>
+      <ul>
+        <li class="fragment">Keep data clean</li>
+        <li class="fragment">Use consistent formatting</li>
+        <li class="fragment">Document formulas</li>
+      </ul>
+    </section>
 
-        <p><strong>Step 2 — Build</strong></p>
-        <p class="fragment">Drag to Rows, Columns, Values, Filters</p>
+    <!-- Slide 25 - Thank You -->
+    <section>
+      <h2>🎉 Thank You!</h2>
+      <ul>
+        <li>✅ Basics → Advanced</li>
+        <li>✅ Practice done</li>
+        <li>✅ Ready for real-world Excel</li>
+      </ul>
+      <p>📌 Keep practicing & exploring!</p>
+      <p>By - Chandra Sekar Singh</p>
+      <p>Email: singhsekar097@gmail.com</p>
+      <p>GitHub: <a href="https://github.com/Singh097" target="_blank">Singh097</a></p>
+    </section>
 
-        <p><strong>Step 3 — PivotChart</strong></p>
-        <p class="fragment">Analyze → PivotChart</p>
-
-        <p><strong>Step 4 — Group</strong></p>
-        <p class="fragment">By Month, Year, Category</p>
-
-        <p class="fragment"><em>[Screenshot: PivotTable example]</em></p>
-      </section>
-
-      <!-- Slide 11 -->
-      <section>
-        <h2>🔵 SECTION 3 — ADVANCED EXCEL</h2>
-        <h3>🧠 Power Formulas • Macros • Automation</h3>
-      </section>
-
-      <!-- Slide 12 -->
-      <section>
-        <h2>🧠 Advanced Formulas</h2>
-        <p><strong>Step 1 — INDEX & MATCH</strong></p>
-        <p class="fragment"><code>=INDEX(B2:B10, MATCH("Product A",A2:A10,0))</code></p>
-
-        <p><strong>Step 2 — INDIRECT</strong></p>
-        <p class="fragment"><code>=INDIRECT("B"&5)</code></p>
-
-        <p><strong>Step 3 — OFFSET</strong></p>
-        <p class="fragment"><code>=OFFSET(A1,1,2)</code></p>
-
-        <p><strong>Step 4 — Array</strong></p>
-        <p class="fragment"><code>{=A1:A3*B1:B3}</code></p>
-
-        <p class="fragment"><em>[Screenshot: INDEX & MATCH]</em></p>
-      </section>
-
-      <!-- Slide 13 -->
-      <section>
-        <h2>🤖 Macros & VBA Basics</h2>
-        <p><strong>Step 1 — Record</strong></p>
-        <p class="fragment">View → Macros → Record</p>
-
-        <p><strong>Step 2 — Perform</strong></p>
-        <p class="fragment">Format → Stop Recording</p>
-
-        <p><strong>Step 3 — Run</strong></p>
-        <p class="fragment">View → Macros → Run</p>
-
-        <p><strong>Step 4 — VBA Editor</strong></p>
-        <p class="fragment"><kbd>Alt</kbd> + <kbd>F11</kbd></p>
-
-        <p class="fragment"><em>[Screenshot: Macro Recorder]</em></p>
-      </section>
-
-      <!-- Slide 14 -->
-      <section>
-        <h2>🔍 Power Query & Data Analysis</h2>
-        <p><strong>Step 1 — Open</strong></p>
-        <p class="fragment">Data → Get & Transform</p>
-
-        <p><strong>Step 2 — Clean</strong></p>
-        <p class="fragment">Remove duplicates, fix data types</p>
-
-        <p><strong>Step 3 — Merge</strong></p>
-        <p class="fragment">Merge Queries</p>
-
-        <p><strong>Step 4 — What-If</strong></p>
-        <p class="fragment">Scenario Manager / Goal Seek</p>
-
-        <p class="fragment"><em>[Screenshot: Power Query Editor]</em></p>
-      </section>
-
-      <!-- Slide 15 -->
-      <section>
-        <h2>🟣 SECTION 4 — PRODUCTIVITY BOOSTERS</h2>
-        <h3>⚡ Shortcuts • Tricks • Data Cleaning</h3>
-      </section>
-
-      <!-- Slide 16 -->
-      <section>
-        <h2>💡 Tips & Shortcuts</h2>
-        <p><strong>Shortcuts</strong></p>
-        <ul>
-          <li class="fragment">Copy/Paste → <kbd>Ctrl</kbd>+<kbd>C</kbd>/<kbd>V</kbd></li>
-          <li class="fragment">Undo → <kbd>Ctrl</kbd>+<kbd>Z</kbd></li>
-          <li class="fragment">Select All → <kbd>Ctrl</kbd>+<kbd>A</kbd></li>
-        </ul>
-
-        <p><strong>Speed Tricks</strong></p>
-        <ul>
-          <li class="fragment">AutoSum → <kbd>Alt</kbd>+<kbd>=</kbd></li>
-          <li class="fragment">Fill Series → Drag fill handle</li>
-          <li class="fragment">Freeze Panes → View → Freeze Panes</li>
-          <li class="fragment">Hide Columns → Right-click → Hide</li>
-        </ul>
-        <p class="fragment"><em>[Screenshot: Shortcut keys]</em></p>
-      </section>
-
-      <!-- Slide 17 -->
-      <section>
-        <h2>🧹 Data Cleaning</h2>
-        <p><strong>Step 1 — Remove Blank Rows</strong></p>
-        <p class="fragment">Filter → Blanks → Delete</p>
-
-        <p><strong>Step 2 — Remove Duplicates</strong></p>
-        <p class="fragment">Data → Remove Duplicates</p>
-
-        <p><strong>Step 3 — Text to Columns</strong></p>
-        <p class="fragment">Split by comma/space</p>
-
-        <p><strong>Step 4 — Trim Spaces</strong></p>
-        <p class="fragment"><code>=TRIM(A1)</code></p>
-
-        <p class="fragment"><em>[Screenshot: Remove Duplicates dialog]</em></p>
-      </section>
-
-      <!-- Slide 18 -->
-      <section>
-        <h2>💪 SECTION 5 — PRACTICE & QUIZ</h2>
-      </section>
-
-      <!-- Slide 19 -->
-      <section>
-        <h2>🏋 Practice Exercise 1 — Basics</h2>
-        <p class="fragment"><strong>Task:</strong> Format headers, apply currency, create a bar chart</p>
-      </section>
-
-      <!-- Slide 20 -->
-      <section>
-        <h2>📐 Practice Exercise 2 — Formulas</h2>
-        <p class="fragment"><strong>Task:</strong> SUM, AVERAGE, IF, Conditional Formatting</p>
-      </section>
-
-      <!-- Slide 21 -->
-      <section>
-        <h2>📊 Practice Exercise 3 — PivotTables</h2>
-        <p class="fragment"><strong>Task:</strong> Create PivotTable & PivotChart</p>
-      </section>
-
-      <!-- Slide 22 -->
-      <section>
-        <h2>📝 Quiz Time</h2>
-        <ul>
-          <li class="fragment">What does <code>VLOOKUP</code> do?</li>
-          <li class="fragment">How to freeze top row?</li>
-          <li class="fragment">Shortcut for AutoSum?</li>
-          <li class="fragment">Function to remove extra spaces?</li>
-        </ul>
-      </section>
-
-      <!-- Slide 23 -->
-      <section>
-        <h2>⚠ Common Excel Mistakes</h2>
-        <ul>
-          <li class="fragment">Not saving often</li>
-          <li class="fragment">Numbers stored as text</li>
-          <li class="fragment">Not naming ranges</li>
-          <li class="fragment">Forgetting <code>$</code> in formulas</li>
-          <li class="fragment">Overcomplicating formulas</li>
-        </ul>
-        <p class="fragment"><em>[Formula error example]</em></p>
-      </section>
-
-      <!-- Slide 24 -->
-      <section>
-        <h2>📚 Resources</h2>
-        <ul>
-          <li class="fragment">Microsoft Excel Help → <kbd>F1</kbd></li>
-          <li class="fragment">ExcelJet.net — Formula examples</li>
-          <li class="fragment">MrExcel.com — Forum</li>
-          <li class="fragment">YouTube — ExcelIsFun, Leila Gharani</li>
-        </ul>
-      </section>
-
-      <!-- Slide 25 -->
-      <section>
-        <h2>🎉 Thank You! 🙏</h2>
-        <ul>
-          <li class="fragment">✅ Basics → Advanced</li>
-          <li class="fragment">✅ Practice Completed ✔️</li>
-          <li class="fragment">✅ Ready for real-world Excel</li>
-        </ul>
-        <p class="fragment"><em>Keep practicing & exploring!</em></p>
-
-        <p>By : Chandra Sekar Singh</p>
-        <p>Email : singhsekar097@gmail.com</p>
-        <p>GitHub : <a href="https://github.com/Singh097" target="_blank">https://github.com/Singh097</a></p>
-      </section>
-
-    </div>
   </div>
+</div>
 
-  <!-- Reveal.js core and plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/notes/notes.js"></script>
-  <script>
-    Reveal.initialize({
-      hash: true,
-      plugins: [ RevealNotes ],
-      transition: 'slide',
-      backgroundTransition: 'fade',
-      fragments: true
-    });
-  </script>
+<!-- Reveal.js Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'slide'
+  });
+</script>
 
 </body>
 </html>
