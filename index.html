@@ -10,13 +10,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
 
   <style>
+    /* --- Base / Dark Theme --- */
     :root {
       --accent: #00d4ff;
       --card-bg: rgba(255,255,255,0.04);
       --muted: rgba(255,255,255,0.65);
       --code-bg: rgba(0,0,0,0.35);
-      --nav-bg: rgba(10,12,15,0.92);
-      --nav-accent: rgba(0,212,255,0.12);
     }
 
     body {
@@ -24,139 +23,94 @@
       background: #0b0d10;
       color: #eef2f6;
       font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
-    }
-
-    /* -------------------------
-       Left navigation (fixed)
-       ------------------------- */
-    #left-nav {
-      position: fixed;
-      left: 12px;
-      top: 72px;
-      width: 240px;
-      max-height: calc(100vh - 140px);
-      overflow-y: auto;
-      background: var(--nav-bg);
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      z-index: 9998;
-      border: 1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(6px);
-    }
-    #left-nav h4 {
-      margin: 6px 10px 8px;
-      font-size: 0.95rem;
-      color: #cfefff;
-      letter-spacing: .2px;
-    }
-    #left-nav .nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    #left-nav .nav-item {
       display: flex;
-      gap: 8px;
-      align-items: center;
-      padding: 8px 10px;
-      margin: 6px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 160ms ease, transform 120ms ease;
-      border-left: 3px solid transparent;
-    }
-    #left-nav .nav-item:hover {
-      background: rgba(255,255,255,0.02);
-      transform: translateX(4px);
-    }
-    #left-nav .nav-index {
-      min-width: 36px;
-      font-weight: 700;
-      color: #bfefff;
-      text-align: right;
-      font-size: 0.90rem;
-      opacity: 0.95;
-    }
-    #left-nav .nav-title {
-      font-size: 0.92rem;
-      color: #eaf6ff;
-      line-height: 1.1;
-    }
-    #left-nav .nav-item.active {
-      background: linear-gradient(90deg, rgba(0,212,255,0.06), rgba(255,255,255,0.01));
-      border-left-color: var(--accent);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.45) inset;
-    }
-    /* small subtle icon on each item */
-    #left-nav .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      flex-shrink: 0;
-    }
-    #left-nav .nav-item.active .dot {
-      background: var(--accent);
-      box-shadow: 0 0 8px rgba(0,212,255,0.12);
+      height: 100vh;
+      overflow: hidden;
     }
 
-    /* -------------------------
-       Top progress bar
-       ------------------------- */
-    #progress-wrap {
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 6px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
-      z-index: 9997;
-    }
-    #progress {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), #00a0cc);
-      transition: width 220ms ease;
-    }
-
-    /* -------------------------
-       Slide counter (bottom-left)
-       ------------------------- */
-    #slide-counter {
-      position: fixed;
-      left: 18px;
-      bottom: 16px;
+    /* Sidebar */
+    #sidebar {
+      width: 280px;
+      background: #111419;
+      border-right: 1px solid #222831;
+      color: #eef2f6;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
       z-index: 9999;
-      background: rgba(0,0,0,0.45);
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-weight: 600;
-      color: #dff6ff;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.03);
-      font-size: 0.95rem;
     }
     #sidebar.collapsed {
       transform: translateX(-280px);
     }
 
-    /* -------------------------
-       Keep slides readable while nav is present
-       ------------------------- */
-    .reveal {
-      padding-left: 0; /* we overlay nav so no forced shift */
-    }
-    /* reduce nav visual on small screens */
-    @media (max-width: 980px) {
-      #left-nav { display: none; }
-      #slide-counter { left: 10px; }
-      .reveal { padding-left: 0; }
+    #sidebar header {
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 12px 20px;
+      border-bottom: 1px solid #222831;
+      background: #0c1016;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    /* -------------------------
-       Your slide styles (kept from original)
-       ------------------------- */
+    #sidebar header button#toggleSidebar {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 1.3rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #sidebar input#searchSlides {
+      margin: 10px 20px;
+      padding: 6px 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      background: #1a1f29;
+      color: #eef2f6;
+      box-shadow: inset 0 0 5px #000;
+    }
+
+    #sidebar ul#slideList {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin: 0;
+      padding: 0 10px 10px 10px;
+      list-style: none;
+    }
+
+    #sidebar ul#slideList li {
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      line-height: 1.3;
+      border-left: 4px solid transparent;
+      transition: background-color 0.2s ease, border-color 0.3s ease;
+    }
+    #sidebar ul#slideList li:hover {
+      background: #222831;
+      border-left-color: var(--accent);
+    }
+    #sidebar ul#slideList li.active {
+      background: var(--accent);
+      color: #0b0d10;
+      border-left-color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Reveal container fills rest of screen */
+    .reveal {
+      flex-grow: 1;
+      height: 100vh;
+      overflow: hidden;
+    }
+
     /* Title slide background */
     .title-slide {
       background-image: url('https://cover.sli.dev');
@@ -165,554 +119,463 @@
       color: #fff;
       text-shadow: 0 6px 18px rgba(0,0,0,0.8);
     }
+
     /* Headings */
-    h1 { font-size: 2.6rem; margin-bottom: 0.2rem; color: var(--accent); }
-    h2 { color: var(--accent); font-size: 1.9rem; margin-bottom: 0.4rem;
-         border-bottom: 2px solid rgba(0,212,255,0.08); padding-bottom: 0.25rem; }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 0.2rem;
+      color: var(--accent);
+    }
+    h2 {
+      color: var(--accent);
+      font-size: 1.9rem;
+      margin-bottom: 0.4rem;
+      border-bottom: 2px solid rgba(0,212,255,0.08);
+      padding-bottom: 0.25rem;
+    }
     h3 { color: #eaf6ff; }
 
     /* Card style lists */
-    ul { list-style: none; padding-left: 0; margin-top: 0.5rem; }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.5rem;
+    }
     ul li {
       background: var(--card-bg);
       border-left: 4px solid rgba(0,212,255,0.18);
-      padding: 10px 14px; margin: 8px 0; border-radius: 8px; font-size: 1.05rem; line-height: 1.4;
+      padding: 10px 14px;
+      margin: 8px 0;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      line-height: 1.4;
     }
 
-    /* Examples */
-    pre, code { font-family: Consolas, "Courier New", monospace; font-size: 0.95rem; }
-    .example { background: var(--code-bg); padding: 10px 12px; border-radius: 8px; margin-top: 8px;
-              color: #f8fafc; border: 1px solid rgba(255,255,255,0.03); }
-    .example .label { color: var(--muted); font-size: 0.85rem; margin-bottom: 6px; display:block; }
-    .formula { background: rgba(0,0,0,0.45); padding: 8px; border-radius: 6px; display:inline-block; margin-right:8px; }
-    .result { font-weight: 700; color: #ffd56b; }
+    /* Code & examples */
+    pre, code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.95rem;
+    }
+    .example {
+      background: var(--code-bg);
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      color: #f8fafc;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .example .label {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      display:block;
+    }
+    .formula {
+      background: rgba(0,0,0,0.45);
+      padding: 8px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    .result {
+      font-weight: 700;
+      color: #ffd56b;
+    }
 
-    /* fragments */
-    .fragment { opacity: 0; transform: translateY(12px); transition: all 420ms cubic-bezier(.2,.9,.2,1); }
-    .fragment.visible { opacity: 1; transform: translateY(0); }
+    /* Keyboard keys */
+    kbd {
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 3px 7px;
+      border: 1px solid rgba(255,255,255,0.06);
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #fff;
+    }
 
-    /* illustration images */
-    .illustration { width: 560px; max-width: 86%; border-radius: 8px; margin-top: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.03); }
+    /* Fragments (smooth fade+rise) */
+    .fragment {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 420ms cubic-bezier(.2,.9,.2,1);
+    }
+    .fragment.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    .muted { color: var(--muted); font-size: 0.95rem; }
+    /* Small illustrative images */
+    .illustration {
+      width: 560px;
+      max-width: 86%;
+      border-radius: 8px;
+      margin-top: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
 
+    /* Slide footer small text */
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Responsive: reduce list size on small screens */
     @media (max-width: 720px) {
-      h1 { font-size: 1.6rem; } h2 { font-size: 1.4rem; }
-      ul li { font-size: 0.98rem; padding: 8px; } .illustration { max-width: 96%; }
-      #left-nav { display: none; } /* collapse nav */
+      h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.4rem; }
+      ul li { font-size: 0.98rem; padding: 8px; }
+      .illustration { max-width: 96%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Progress bar -->
-  <div id="progress-wrap"><div id="progress"></div></div>
+<!-- Sidebar with toggle and search -->
+<nav id="sidebar">
+  <header>
+    <span>Slides</span>
+    <button id="toggleSidebar" aria-label="Toggle sidebar">&#9776;</button>
+  </header>
+  <input type="text" id="searchSlides" placeholder="Search slides..." aria-label="Search slides" />
+  <ul id="slideList" role="list"></ul>
+</nav>
 
-  <!-- Left navigation -->
-  <aside id="left-nav" aria-label="Slide navigation">
-    <h4>Slides</h4>
-    <ul class="nav-list" id="nav-list">
-      <!-- Items injected by JS (one per slide) -->
-    </ul>
-  </aside>
+<!-- Reveal.js presentation -->
+<div class="reveal">
+  <div class="slides">
 
-  <!-- Slide counter -->
-  <div id="slide-counter">1 / 26</div>
+    <!-- Slide 1 - Title -->
+    <section class="title-slide" data-title="Excel Training — From Basics to Advanced">
+      <h1>📊 Excel Training — From Basics to Advanced</h1>
+      <p class="muted">Master Excel Skills for Data Management, Analysis, and Automation</p>
+      <p style="margin-top:10px"><strong>Trainer:</strong> Chandra Sekar Singh</p>
+      <p class="muted" style="font-size:0.95rem;margin-top:14px">Open-source images used where helpful • Dark theme</p>
+    </section>
 
-  <!-- Reveal deck -->
-  <div class="reveal">
-    <div class="slides">
+    <!-- Slide 2 - Agenda -->
+    <section data-title="Agenda">
+      <h2>📅 Agenda</h2>
+      <ul>
+        <li class="fragment">📘 Introduction to Excel</li>
+        <li class="fragment">✏️ Basic Functions & Formatting</li>
+        <li class="fragment">🗂 Data Management Tools</li>
+        <li class="fragment">🧩 Intermediate Formulas</li>
+        <li class="fragment">📊 Charts & Visualization</li>
+        <li class="fragment">📈 PivotTables & PivotCharts</li>
+        <li class="fragment">🧠 Advanced Formulas</li>
+        <li class="fragment">🤖 Macros & VBA Basics</li>
+        <li class="fragment">🔍 Power Query & Data Analysis</li>
+        <li class="fragment">💡 Tips & Shortcuts</li>
+      </ul>
+      <p class="muted">We’ll explore each with examples and small visuals.</p>
+    </section>
 
-      <!-- Slide 1 - Title (preserved exactly as your original) -->
-      <section class="title-slide">
-        <h1>📊 Excel Training — From Basics to Advanced</h1>
-        <p class="muted">Master Excel Skills for Data Management, Analysis, and Automation</p>
-        <p style="margin-top:10px"><strong>Trainer:</strong> Chandra Sekar Singh</p>
-        <p class="muted" style="font-size:0.95rem;margin-top:14px">Open-source images used where helpful • Dark theme</p>
-      </section>
+    <!-- Slide 3 - Section 1 -->
+    <section data-title="Section 1 — Basics of Excel">
+      <h2>🟢 SECTION 1 — BASICS OF EXCEL</h2>
+      <h3>📘 Data Entry • Formatting • Essential Functions</h3>
+    </section>
 
-      <!-- Slide 2 - Agenda -->
-      <section>
-        <h2>📅 Agenda</h2>
-        <ul>
-          <li class="fragment">📘 Introduction to Excel</li>
-          <li class="fragment">✏️ Basic Functions & Formatting</li>
-          <li class="fragment">🗂 Data Management Tools</li>
-          <li class="fragment">🧩 Intermediate Formulas</li>
-          <li class="fragment">📊 Charts & Visualization</li>
-          <li class="fragment">📈 PivotTables & PivotCharts</li>
-          <li class="fragment">🧠 Advanced Formulas</li>
-          <li class="fragment">🤖 Macros & VBA Basics</li>
-          <li class="fragment">🔍 Power Query & Data Analysis</li>
-          <li class="fragment">💡 Tips & Shortcuts</li>
-        </ul>
-        <p class="muted">We’ll explore each with examples and small visuals.</p>
-      </section>
+    <!-- Slide 4 - Introduction to Excel -->
+    <section data-title="Introduction to Excel">
+      <h2>📘 Introduction to Excel</h2>
+      <ul>
+        <li class="fragment"><strong>What is Excel?</strong> — Spreadsheet software to store, organize & analyze data.</li>
+        <li class="fragment"><strong>Workbook & Worksheet</strong> — Files & sheets.</li>
+        <li class="fragment"><strong>Cells & Formula Bar</strong> — Where you type values and formulas.</li>
+      </ul>
+      <p class="example fragment">
+        <span class="label">Quick tip</span>
+        <code class="formula">Ctrl + S</code> Save frequently. <span class="muted"> (Windows)</span>
+      </p>
+    </section>
 
-      <!-- Slide 3 - Section 1 -->
-      <section>
-        <h2>🟢 SECTION 1 — BASICS OF EXCEL</h2>
-        <h3>📘 Data Entry • Formatting • Essential Functions</h3>
-      </section>
+    <!-- Slide 5 - Basic Functions & Formatting -->
+    <section data-title="Basic Functions & Formatting">
+      <h2>✏️ Basic Functions & Formatting</h2>
+      <ul>
+        <li class="fragment">Data entry: click cell → type → <kbd>Enter</kbd></li>
+        <li class="fragment">Formatting: fonts, borders, fill.</li>
+        <li class="fragment">Number formats: Currency / Percentage / Date</li>
+      </ul>
 
-      <!-- Slide 4 - Introduction to Excel -->
-      <section>
-        <h2>📘 Introduction to Excel</h2>
-        <ul>
-          <li class="fragment"><strong>What is Excel?</strong> — Spreadsheet software to store, organize & analyze data.</li>
-          <li class="fragment"><strong>Workbook & Worksheet</strong> — Files & sheets.</li>
-          <li class="fragment"><strong>Cells & Formula Bar</strong> — Where you type values and formulas.</li>
-        </ul>
-        <p class="example fragment">
-          <span class="label">Quick tip</span>
-          <code class="formula">Ctrl + S</code> Save frequently. <span class="muted"> (Windows)</span>
-        </p>
-      </section>
-
-      <!-- Slide 5 - Basic Functions & Formatting -->
-      <section>
-        <h2>✏️ Basic Functions & Formatting</h2>
-        <ul>
-          <li class="fragment">Data entry: click cell → type → <kbd>Enter</kbd></li>
-          <li class="fragment">Formatting: fonts, borders, fill.</li>
-          <li class="fragment">Number formats: Currency / Percentage / Date</li>
-        </ul>
-
-        <div class="fragment example">
-          <span class="label">Example — SUM / AVERAGE / MIN / MAX</span>
-          <div style="margin-bottom:6px; font-size:0.95rem;">
-            Values in A1:A5 = [10, 20, 30, 40, 50]
-          </div>
-          <div><code class="formula">=SUM(A1:A5)</code> → <span class="result">150</span></div>
-          <div><code class="formula">=AVERAGE(A1:A5)</code> → <span class="result">30</span></div>
-          <div><code class="formula">=MIN(A1:A5)</code> → <span class="result">10</span> · <code class="formula">=MAX(A1:A5)</code> → <span class="result">50</span></div>
+      <div class="fragment example">
+        <span class="label">Example — SUM / AVERAGE / MIN / MAX</span>
+        <div style="margin-bottom:6px; font-size:0.95rem;">
+          Values in A1:A5 = [10, 20, 30, 40, 50]
         </div>
-      </section>
+        <div><code class="formula">=SUM(A1:A5)</code> → <span class="result">150</span></div>
+        <div><code class="formula">=AVERAGE(A1:A5)</code> → <span class="result">30</span></div>
+        <div><code class="formula">=MIN(A1:A5)</code> → <span class="result">10</span> · <code class="formula">=MAX(A1:A5)</code> → <span class="result">50</span></div>
+      </div>
+    </section>
 
-      <!-- Slide 6 - Data Management Tools -->
-      <section>
-        <h2>🗂 Data Management Tools</h2>
-        <ul>
-          <li class="fragment">Sort (A→Z / Z→A)</li>
-          <li class="fragment">Filter (dropdowns)</li>
-          <li class="fragment">Find & Replace (<kbd>Ctrl</kbd> + <kbd>H</kbd>)</li>
-          <li class="fragment">Data Validation (dropdown lists)</li>
-        </ul>
+    <!-- Slide 6 - Data Management Tools -->
+    <section data-title="Data Management Tools">
+      <h2>🗂 Data Management Tools</h2>
+      <ul>
+        <li class="fragment">Sort (A→Z / Z→A)</li>
+        <li class="fragment">Filter (dropdowns)</li>
+        <li class="fragment">Find & Replace (<kbd>Ctrl</kbd> + <kbd>H</kbd>)</li>
+        <li class="fragment">Data Validation (dropdown lists)</li>
+      </ul>
 
-        <img class="illustration fragment" src="https://source.unsplash.com/800x450/?spreadsheet" alt="spreadsheet example (open-source)">
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?spreadsheet" alt="spreadsheet example (open-source)">
 
-        <div class="example fragment">
-          <span class="label">Example — Data Validation</span>
-          Create a dropdown in cell B1 with items: <code>Red, Green, Blue</code> — choose from list.
-        </div>
-      </section>
+      <div class="example fragment">
+        <span class="label">Example — Data Validation</span>
+        Create a dropdown in cell B1 with items: <code>Red, Green, Blue</code> — choose from list.
+      </div>
+    </section>
 
-      <!-- Slide 7 - Section 2 header -->
-      <section>
-        <h2>🟡 SECTION 2 — INTERMEDIATE EXCEL</h2>
-        <h3>🧩 Formulas • Charts • PivotTables</h3>
-      </section>
+    <!-- Slide 7 - Section 2 header -->
+    <section data-title="Section 2 — Intermediate Excel">
+      <h2>🟡 SECTION 2 — INTERMEDIATE EXCEL</h2>
+      <h3>🧩 Formulas • Charts • PivotTables</h3>
+    </section>
 
-      <!-- Slide 8 - Intermediate Formulas -->
-      <section>
-        <h2>🧩 Intermediate Formulas</h2>
-        <ul>
-          <li class="fragment"><strong>Text functions</strong> — LEFT, RIGHT, MID</li>
-          <li class="fragment"><strong>Logical</strong> — IF</li>
-          <li class="fragment"><strong>Lookup</strong> — VLOOKUP, XLOOKUP</li>
-        </ul>
+    <!-- Slide 8 - Intermediate Formulas -->
+    <section data-title="Intermediate Formulas">
+      <h2>🧩 Intermediate Formulas</h2>
+      <ul>
+        <li class="fragment"><strong>Text functions</strong> — LEFT, RIGHT, MID</li>
+        <li class="fragment"><strong>Logical</strong> — IF</li>
+        <li class="fragment"><strong>Lookup</strong> — VLOOKUP, XLOOKUP</li>
+      </ul>
 
-        <div class="example fragment">
-          <span class="label">Text examples</span>
-          <div><code class="formula">=LEFT("Revenue",4)</code> → <span class="result">"Reve"</span></div>
-          <div><code class="formula">=RIGHT("Revenue",3)</code> → <span class="result">"nue"</span></div>
-          <div><code class="formula">=MID("Dataset",3,4)</code> → <span class="result">"tase"</span></div>
-        </div>
+      <div class="example fragment">
+        <span class="label">Text examples</span>
+        <div><code class="formula">=LEFT("Revenue",4)</code> → <span class="result">"Reve"</span></div>
+        <div><code class="formula">=RIGHT("Revenue",3)</code> → <span class="result">"nue"</span></div>
+        <div><code class="formula">=MID("Dataset",3,4)</code> → <span class="result">"tase"</span></div>
+      </div>
 
-        <div class="example fragment" style="margin-top:10px;">
-          <span class="label">Logical example</span>
-          <div>With A2 = 120: <code class="formula">=IF(A2>100,"Pass","Fail")</code> → <span class="result">"Pass"</span></div>
-        </div>
+      <div class="example fragment" style="margin-top:10px;">
+        <span class="label">Logical example</span>
+        <div>With A2 = 120: <code class="formula">=IF(A2>100,"Pass","Fail")</code> → <span class="result">"Pass"</span></div>
+      </div>
 
-        <div class="example fragment" style="margin-top:10px;">
-          <span class="label">Lookup examples (small table)</span>
-          <div style="margin-bottom:6px">Table A2:B4 — Apple:10, Banana:20, Cherry:30</div>
-          <div><code class="formula">=VLOOKUP("Banana",A2:B4,2,FALSE)</code> → <span class="result">20</span></div>
-          <div><code class="formula">=XLOOKUP("Cherry",A2:A4,B2:B4)</code> → <span class="result">30</span></div>
-          <div><code class="formula">=INDEX(B2:B4, MATCH("Apple",A2:A4,0))</code> → <span class="result">10</span></div>
-        </div>
-      </section>
+      <div class="example fragment" style="margin-top:10px;">
+        <span class="label">Lookup examples (small table)</span>
+        <div style="margin-bottom:6px">Table A2:B4 — Apple:10, Banana:20, Cherry:30</div>
+        <div><code class="formula">=VLOOKUP("Banana",A2:B4,2,FALSE)</code> → <span class="result">20</span></div>
+        <div><code class="formula">=XLOOKUP("Cherry",A2:A4,B2:B4)</code> → <span class="result">30</span></div>
+        <div><code class="formula">=INDEX(B2:B4, MATCH("Apple",A2:A4,0))</code> → <span class="result">10</span></div>
+      </div>
+    </section>
 
-      <!-- Slide 9 - Charts & Visualization -->
-      <section>
-        <h2>📊 Charts & Visualization</h2>
-        <ul>
-          <li class="fragment">Select data → Insert chart</li>
-          <li class="fragment">Format titles, axes, labels</li>
-          <li class="fragment">Use conditional formatting for quick visuals</li>
-        </ul>
+    <!-- Slide 9 - Charts & Visualization -->
+    <section data-title="Charts & Visualization">
+      <h2>📊 Charts & Visualization</h2>
+      <ul>
+        <li class="fragment">Select data → Insert chart</li>
+        <li class="fragment">Format titles, axes, labels</li>
+        <li class="fragment">Use conditional formatting for quick visuals</li>
+      </ul>
 
-        <img class="illustration fragment" src="https://source.unsplash.com/800x450/?chart,graph" alt="chart example (open-source)">
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?chart,graph" alt="chart example (open-source)">
 
-        <div class="example fragment">
-          <span class="label">Quick example</span>
-          Data: Sales Jan–May = [120, 150, 110, 180, 210] → Insert a column chart to show trend.
-        </div>
-      </section>
+      <div class="example fragment">
+        <span class="label">Quick example</span>
+        Data: Sales Jan–May = [120, 150, 110, 180, 210] → Insert a column chart to show trend.
+      </div>
+    </section>
 
-      <!-- Slide 10 - PivotTables -->
-      <section>
-        <h2>📈 PivotTables & PivotCharts</h2>
-        <ul>
-          <li class="fragment">Insert → PivotTable</li>
-          <li class="fragment">Drag fields → Rows / Columns / Values / Filters</li>
-          <li class="fragment">Create PivotCharts for visualization</li>
-        </ul>
+    <!-- Slide 10 - PivotTables -->
+    <section data-title="PivotTables & PivotCharts">
+      <h2>📈 PivotTables & PivotCharts</h2>
+      <ul>
+        <li class="fragment">Insert → PivotTable</li>
+        <li class="fragment">Drag fields → Rows / Columns / Values / Filters</li>
+        <li class="fragment">Create PivotCharts for visualization</li>
+      </ul>
 
-        <img class="illustration fragment" src="https://source.unsplash.com/800x450/?pivot,table,excel" alt="pivot table example (open-source)">
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?pivot,table,excel" alt="pivot table example (open-source)">
 
-        <div class="example fragment">
-          <span class="label">Example</span>
-          Using a sales table, put Product in Rows, Month in Columns and Sum of Sales in Values → get quick monthly totals by product.
-        </div>
-      </section>
+      <div class="example fragment">
+        <span class="label">Example</span>
+        Using a sales table, put Product in Rows, Month in Columns and Sum of Sales in Values → get quick monthly totals by product.
+      </div>
+    </section>
 
-      <!-- Slide 11 - Section 3 -->
-      <section>
-        <h2>🔵 SECTION 3 — ADVANCED EXCEL</h2>
-        <h3>🧠 Power Formulas • Macros • Automation</h3>
-      </section>
+    <!-- Slide 11 - Section 3 -->
+    <section data-title="Section 3 — Advanced Excel">
+      <h2>🔵 SECTION 3 — ADVANCED EXCEL</h2>
+      <h3>🧠 Power Formulas • Macros • Automation</h3>
+    </section>
 
-      <!-- Slide 12 - Advanced Formulas -->
-      <section>
-        <h2>🧠 Advanced Formulas</h2>
-        <ul>
-          <li class="fragment">INDEX & MATCH</li>
-          <li class="fragment">INDIRECT & OFFSET (dynamic references)</li>
-          <li class="fragment">Array formulas</li>
-        </ul>
+        <!-- Slide 12 - Advanced Formulas -->
+    <section data-title="Advanced Formulas">
+      <h2>🧠 Advanced Formulas</h2>
+      <ul>
+        <li class="fragment">INDEX & MATCH for flexible lookups</li>
+        <li class="fragment">INDIRECT & OFFSET for dynamic references</li>
+        <li class="fragment">Array formulas for multi-cell calculations</li>
+      </ul>
 
-        <div class="example fragment">
-          <span class="label">INDEX + MATCH example</span>
-          <div style="margin-bottom:6px">Table A2:A4 products = [A, B, C]; B2:B4 values = [100,200,300]</div>
-          <div><code class="formula">=INDEX(B2:B4, MATCH("C",A2:A4,0))</code> → <span class="result">300</span></div>
-        </div>
+      <div class="example fragment" style="margin-top:12px;">
+        <span class="label">Example — INDEX & MATCH</span>
+        <div>Find Sales for "Banana" from A2:B4</div>
+        <code class="formula">=INDEX(B2:B4, MATCH("Banana", A2:A4, 0))</code> → <span class="result">20</span>
+      </div>
+    </section>
 
-        <div class="example fragment" style="margin-top:8px;">
-          <span class="label">INDIRECT example</span>
-          <div><code class="formula">=INDIRECT("B"&5)</code> reads cell B5 (useful for building dynamic references)</div>
-        </div>
-      </section>
+    <!-- Slide 13 - Macros & VBA Basics -->
+    <section data-title="Macros & VBA Basics">
+      <h2>🤖 Macros & VBA Basics</h2>
+      <ul>
+        <li class="fragment">Record Macros for repetitive tasks</li>
+        <li class="fragment">Basic VBA editor introduction</li>
+        <li class="fragment">Writing simple scripts to automate</li>
+      </ul>
+      <div class="example fragment">
+        <span class="label">Example Macro</span>
+        <pre><code>Sub HelloWorld()
+  MsgBox "Hello, Excel!"
+End Sub
+        </code></pre>
+      </div>
+    </section>
 
-      <!-- Slide 13 - Macros & VBA -->
-      <section>
-        <h2>🤖 Macros & VBA Basics</h2>
-        <ul>
-          <li class="fragment">Record macros to automate steps</li>
-          <li class="fragment">Open VBA Editor: <kbd>Alt</kbd> + <kbd>F11</kbd></li>
-          <li class="fragment">Run macros to repeat tasks</li>
-        </ul>
+    <!-- Slide 14 - Power Query & Data Analysis -->
+    <section data-title="Power Query & Data Analysis">
+      <h2>🔍 Power Query & Data Analysis</h2>
+      <ul>
+        <li class="fragment">Import & transform data from multiple sources</li>
+        <li class="fragment">Clean & shape data easily</li>
+        <li class="fragment">Automate refresh of data models</li>
+      </ul>
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?data,analysis" alt="data analysis illustration">
+    </section>
 
-        <img class="illustration fragment" src="https://source.unsplash.com/800x450/?code,macro" alt="macro/vba example (open-source)">
+    <!-- Slide 15 - Tips & Shortcuts -->
+    <section data-title="Tips & Shortcuts">
+      <h2>💡 Tips & Shortcuts</h2>
+      <ul>
+        <li class="fragment"><kbd>Ctrl + C</kbd>, <kbd>Ctrl + V</kbd> — Copy/Paste</li>
+        <li class="fragment"><kbd>Ctrl + Z</kbd> — Undo</li>
+        <li class="fragment"><kbd>Ctrl + Arrow Keys</kbd> — Navigate quickly</li>
+        <li class="fragment"><kbd>Ctrl + Shift + L</kbd> — Toggle filters</li>
+        <li class="fragment"><kbd>F4</kbd> — Repeat last action / toggle absolute refs</li>
+      </ul>
+    </section>
 
-        <div class="example fragment">
-          <span class="label">Example — simple macro recorded</span>
-          Record: format header row → Save macro "FormatHeader" → Run later to apply same formatting.
-        </div>
-      </section>
+    <!-- Slide 16 - Excel Table Feature -->
+    <section data-title="Excel Table Feature">
+      <h2>📋 Excel Table Feature</h2>
+      <ul>
+        <li class="fragment">Convert range to Table for structured references</li>
+        <li class="fragment">Automatic filtering and sorting</li>
+        <li class="fragment">Dynamic ranges with formulas</li>
+      </ul>
+      <div class="example fragment">
+        <span class="label">Create Table</span>
+        Select range → <kbd>Ctrl + T</kbd> → Check 'My table has headers'
+      </div>
+    </section>
 
-      <!-- Slide 14 - Power Query -->
-      <section>
-        <h2>🔍 Power Query & Data Analysis</h2>
-        <ul>
-          <li class="fragment">Data → Get & Transform</li>
-          <li class="fragment">Use Power Query Editor to clean & transform</li>
-          <li class="fragment">Merge/Append queries from multiple sources</li>
-        </ul>
+    <!-- Slide 17 - Conditional Formatting -->
+    <section data-title="Conditional Formatting">
+      <h2>🎨 Conditional Formatting</h2>
+      <ul>
+        <li class="fragment">Highlight cells based on rules</li>
+        <li class="fragment">Use color scales and icon sets</li>
+        <li class="fragment">Custom formulas for advanced conditions</li>
+      </ul>
+      <div class="example fragment">
+        <span class="label">Example Rule</span>
+        Highlight cells > 100 with red fill.
+      </div>
+    </section>
 
-        <img class="illustration fragment" src="https://source.unsplash.com/800x450/?data,etl" alt="power query example (open-source)">
+    <!-- Slide 18 - Data Validation -->
+    <section data-title="Data Validation">
+      <h2>✅ Data Validation</h2>
+      <ul>
+        <li class="fragment">Restrict entries with drop-down lists</li>
+        <li class="fragment">Input messages & error alerts</li>
+        <li class="fragment">Ensure data consistency</li>
+      </ul>
+      <div class="example fragment">
+        <span class="label">Example</span>
+        Allow only dates between 1 Jan 2020 and 31 Dec 2020.
+      </div>
+    </section>
 
-        <div class="example fragment">
-          <span class="label">Example</span>
-          Import a CSV → Remove header rows, change column types → Close & Load into worksheet.
-        </div>
-      </section>
+    <!-- Slide 19 - Protecting Worksheets -->
+    <section data-title="Protecting Worksheets">
+      <h2>🔒 Protecting Worksheets</h2>
+      <ul>
+        <li class="fragment">Lock cells to prevent editing</li>
+        <li class="fragment">Protect sheet with password</li>
+        <li class="fragment">Allow certain actions despite protection</li>
+      </ul>
+    </section>
 
-      <!-- Slide 15 - Productivity Boosters -->
-      <section>
-        <h2>🟣 SECTION 4 — PRODUCTIVITY BOOSTERS</h2>
-        <h3>⚡ Shortcuts • Tricks • Data Cleaning</h3>
-      </section>
+    <!-- Slide 20 - Collaboration Features -->
+    <section data-title="Collaboration Features">
+      <h2>🤝 Collaboration Features</h2>
+      <ul>
+        <li class="fragment">Comments and Notes</li>
+        <li class="fragment">Track changes and version history</li>
+        <li class="fragment">Share workbook with others</li>
+      </ul>
+    </section>
 
-      <!-- Slide 16 - Tips & Shortcuts -->
-      <section>
-        <h2>💡 Tips & Shortcuts</h2>
-        <ul>
-          <li class="fragment">Copy/Paste — <kbd>Ctrl</kbd>+<kbd>C</kbd>/<kbd>V</kbd></li>
-          <li class="fragment">Undo — <kbd>Ctrl</kbd>+<kbd>Z</kbd></li>
-          <li class="fragment">Select All — <kbd>Ctrl</kbd>+<kbd>A</kbd></li>
-        </ul>
+    <!-- Slide 21 - Printing and Page Setup -->
+    <section data-title="Printing and Page Setup">
+      <h2>🖨 Printing and Page Setup</h2>
+      <ul>
+        <li class="fragment">Set print area and print titles</li>
+        <li class="fragment">Adjust margins and orientation</li>
+        <li class="fragment">Preview before printing</li>
+      </ul>
+    </section>
 
-        <div class="example fragment">
-          <span class="label">Speed tricks</span>
-          <div><code class="formula">Alt + =</code> inserts AutoSum. <span class="muted">Try it on a column of numbers.</span></div>
-        </div>
-      </section>
+    <!-- Slide 22 - Keyboard Shortcuts Summary -->
+    <section data-title="Keyboard Shortcuts Summary">
+      <h2>⌨️ Keyboard Shortcuts Summary</h2>
+      <ul>
+        <li class="fragment"><kbd>Ctrl + N</kbd> — New workbook</li>
+        <li class="fragment"><kbd>Ctrl + O</kbd> — Open workbook</li>
+        <li class="fragment"><kbd>Ctrl + P</kbd> — Print</li>
+        <li class="fragment"><kbd>Ctrl + F</kbd> — Find</li>
+        <li class="fragment"><kbd>Alt + =</kbd> — AutoSum</li>
+      </ul>
+    </section>
 
-      <!-- Slide 17 - Data Cleaning -->
-      <section>
-        <h2>🧹 Data Cleaning</h2>
-        <ul>
-          <li class="fragment">Remove blank rows</li>
-          <li class="fragment">Remove duplicates (Data → Remove Duplicates)</li>
-          <li class="fragment">Text to Columns</li>
-          <li class="fragment">Trim spaces: <code>=TRIM(A1)</code></li>
-        </ul>
+    <!-- Slide 23 - Useful Excel Add-ins -->
+    <section data-title="Useful Excel Add-ins">
+      <h2>🔌 Useful Excel Add-ins</h2>
+      <ul>
+        <li class="fragment">Power Pivot for advanced data models</li>
+        <li class="fragment">Analysis ToolPak for statistical analysis</li>
+        <li class="fragment">Solver for optimization problems</li>
+      </ul>
+    </section>
 
-        <div class="example fragment">
-          <span class="label">TRIM example</span>
-          <div>Cell A1 = "  hello  " → <code class="formula">=TRIM(A1)</code> → <span class="result">"hello"</span></div>
-        </div>
-      </section>
+    <!-- Slide 24 - Learning Resources -->
+    <section data-title="Learning Resources">
+      <h2>📚 Learning Resources</h2>
+      <ul>
+        <li class="fragment">Microsoft official tutorials & docs</li>
+        <li class="fragment">YouTube channels: ExcelIsFun, Leila Gharani</li>
+        <li class="fragment">Online courses: Coursera, Udemy</li>
+        <li class="fragment">Practice with real datasets</li>
+      </ul>
+    </section>
 
-      <!-- Slide 18 - Practice & Quiz -->
-      <section>
-        <h2>💪 SECTION 5 — PRACTICE & QUIZ</h2>
-        <p class="muted">Now try hands-on exercises below (practice files optional).</p>
-      </section>
+    <!-- Slide 25 - Q&A -->
+    <section data-title="Q&A">
+      <h2>❓ Questions & Answers</h2>
+      <p>Feel free to ask any questions or clarifications about Excel.</p>
+    </section>
 
-      <!-- Slide 19 - Practice 1 -->
-      <section>
-        <h2>🏋 Practice Exercise 1 — Basics</h2>
-        <ul>
-          <li class="fragment">Format headers, apply currency</li>
-          <li class="fragment">Create a bar chart from sample data</li>
-        </ul>
-        <div class="example fragment">
-          <span class="label">Sample data</span>
-          Sales Q1: [Jan:120, Feb:150, Mar:180] → create a column chart to show the trend.
-        </div>
-      </section>
-
-      <!-- Slide 20 - Practice 2 -->
-      <section>
-        <h2>📐 Practice Exercise 2 — Formulas</h2>
-        <ul>
-          <li class="fragment">Use SUM, AVERAGE, IF</li>
-          <li class="fragment">Apply Conditional Formatting for top performers</li>
-        </ul>
-
-        <div class="example fragment">
-          <span class="label">IF example</span>
-          If score in B2 is 85: <code class="formula">=IF(B2>=70,"Pass","Fail")</code> → <span class="result">"Pass"</span>
-        </div>
-      </section>
-
-      <!-- Slide 21 - Practice 3 -->
-      <section>
-        <h2>📊 Practice Exercise 3 — PivotTables</h2>
-        <ul>
-          <li class="fragment">Create PivotTable from sales table</li>
-          <li class="fragment">Add Month as column and Product as row</li>
-        </ul>
-        <div class="example fragment">
-          <span class="label">Result</span>
-          You will get aggregated sums (e.g., Product A total for Jan).
-        </div>
-      </section>
-
-      <!-- Slide 22 - Quiz -->
-      <section>
-        <h2>📝 Quiz Time</h2>
-        <ul>
-          <li class="fragment">What does <code>VLOOKUP</code> do?</li>
-          <li class="fragment">How to freeze top row?</li>
-          <li class="fragment">Shortcut for AutoSum?</li>
-          <li class="fragment">Which function removes extra spaces?</li>
-        </ul>
-      </section>
-
-      <!-- Slide 23 - Common Mistakes -->
-      <section>
-        <h2>⚠ Common Excel Mistakes</h2>
-        <ul>
-          <li class="fragment">Not saving often</li>
-          <li class="fragment">Numbers stored as text</li>
-          <li class="fragment">Not naming ranges</li>
-          <li class="fragment">Forgetting <code>$</code> (absolute references)</li>
-          <li class="fragment">Overcomplicating formulas</li>
-        </ul>
-
-        <div class="example fragment">
-          <span class="label">Fix example</span>
-          If a number is text: use <code class="formula">=VALUE(A1)</code> to convert.
-        </div>
-      </section>
-
-      <!-- Slide 24 - Resources -->
-      <section>
-        <h2>📚 Resources</h2>
-        <ul>
-          <li class="fragment">Microsoft Excel Help (F1)</li>
-          <li class="fragment">ExcelJet.net — formula examples</li>
-          <li class="fragment">MrExcel.com — community forum</li>
-          <li class="fragment">YouTube — ExcelIsFun, Leila Gharani</li>
-        </ul>
-        <p class="muted fragment">Images used from Unsplash queries (open-source / free)</p>
-      </section>
-
-      <!-- Slide 25 - Thank You -->
-      <section>
-        <h2>🎉 Thank You! 🙏</h2>
-        <ul>
-          <li class="fragment">✅ Basics → Advanced</li>
-          <li class="fragment">✅ Practice Completed ✔️</li>
-          <li class="fragment">✅ Ready for real-world Excel</li>
-        </ul>
-        <p class="fragment">By : Chandra Sekar Singh • Email: <a href="mailto:singhsekar097@gmail.com">singhsekar097@gmail.com</a></p>
-        <p class="fragment">GitHub: <a href="https://github.com/Singh097" target="_blank">Singh097</a></p>
-      </section>
-
-      <!-- Slide 26 - Appendix / Contact -->
-      <section>
-        <h2>📎 Appendix & Contact</h2>
-        <ul>
-          <li class="fragment">Download sample files from GitHub</li>
-          <li class="fragment">Follow up: Q&A session / Office hours</li>
-        </ul>
-        <p class="muted fragment">Email: <a href="mailto:singhsekar097@gmail.com">singhsekar097@gmail.com</a></p>
-        <p class="muted fragment">GitHub: <a href="https://github.com/Singh097" target="_blank">Singh097</a></p>
-      </section>
-
-    </div>
-  </div>
-
-  <!-- Reveal.js -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
-  <script>
-    // Initialize Reveal
-    Reveal.initialize({
-      hash: true,
-      slideNumber: false, // we use custom counter
-      transition: 'fade',
-      backgroundTransition: 'fade',
-      fragments: true
-    });
-
-    // List of titles (26) - matches the slides in order
-    const slideTitles = [
-      "Excel Training — From Basics to Advanced",
-      "Agenda",
-      "SECTION 1 — BASICS OF EXCEL",
-      "Introduction to Excel",
-      "Basic Functions & Formatting",
-      "Data Management Tools",
-      "SECTION 2 — INTERMEDIATE EXCEL",
-      "Intermediate Formulas",
-      "Charts & Visualization",
-      "PivotTables & PivotCharts",
-      "SECTION 3 — ADVANCED EXCEL",
-      "Advanced Formulas",
-      "Macros & VBA Basics",
-      "Power Query & Data Analysis",
-      "SECTION 4 — PRODUCTIVITY BOOSTERS",
-      "Tips & Shortcuts",
-      "Data Cleaning",
-      "SECTION 5 — PRACTICE & QUIZ",
-      "Practice Exercise 1 — Basics",
-      "Practice Exercise 2 — Formulas",
-      "Practice Exercise 3 — PivotTables",
-      "Quiz Time",
-      "Common Excel Mistakes",
-      "Resources",
-      "Thank You",
-      "Appendix & Contact"
-    ];
-
-    // Build nav items
-    const navList = document.getElementById('nav-list');
-    slideTitles.forEach((t, i) => {
-      const li = document.createElement('li');
-      li.className = 'nav-item';
-      li.dataset.index = i;
-      li.innerHTML = `<div class="nav-index">${String(i+1).padStart(2,'0')}</div>
-                      <div class="dot" aria-hidden="true"></div>
-                      <div class="nav-title">${t}</div>`;
-      li.addEventListener('click', (e) => {
-        const idx = Number(li.dataset.index);
-        Reveal.slide(idx);
-      });
-      navList.appendChild(li);
-    });
-
-    // Update active nav, progress, and counter on slide change
-    const navItems = () => Array.from(document.querySelectorAll('#nav-list .nav-item'));
-    const progressEl = document.getElementById('progress');
-    const counterEl = document.getElementById('slide-counter');
-
-    function updateNav() {
-      const totalSlides = slideTitles.length;
-      const indices = Reveal.getIndices();
-      const current = indices ? indices.h : 0;
-      // highlight active
-      navItems().forEach((el) => {
-        if (Number(el.dataset.index) === current) {
-          el.classList.add('active');
-        } else {
-          el.classList.remove('active');
-        }
-      });
-      // progress: percent of (current index) through (total-1)
-      const pct = (current) / Math.max(1, totalSlides - 1) * 100;
-      progressEl.style.width = pct + '%';
-      // counter
-      counterEl.textContent = `${current + 1} / ${totalSlides}`;
-      // scroll active into view inside nav
-      const activeEl = document.querySelector('#nav-list .nav-item.active');
-      if (activeEl) {
-        const nav = document.getElementById('left-nav');
-        const rect = activeEl.getBoundingClientRect();
-        const navRect = nav.getBoundingClientRect();
-        if (rect.top < navRect.top + 20) {
-          nav.scrollTop -= (navRect.top + 20) - rect.top;
-        } else if (rect.bottom > navRect.bottom - 20) {
-          nav.scrollTop += rect.bottom - (navRect.bottom - 20);
-        }
-      }
-    }
-
-    // initial update when reveal ready
-    Reveal.on('ready', function() {
-      updateNav();
-      // reveal fragments are automatically handled by Reveal.js
-    });
-
-    Reveal.on('slidechanged', function() {
-      updateNav();
-    });
-
-    // Also update when fragments shown/hidden (keeps nav in sync)
-    Reveal.on('fragmentshown', function() { updateNav(); });
-    Reveal.on('fragmenthidden', function() { updateNav(); });
-
-    // If user uses keyboard to navigate, keep UI synced
-    document.addEventListener('keydown', function(e) {
-      // slight delay to wait for Reveal to change indices
-      setTimeout(updateNav, 10);
-    });
-
-    // Accessibility: allow nav items to be focusable by keyboard
-    document.querySelectorAll('#nav-list .nav-item').forEach((el) => {
-      el.tabIndex = 0;
-      el.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Enter' || ev.key === ' ') {
-          ev.preventDefault();
-          Reveal.slide(Number(el.dataset.index));
-        }
-      });
-    });
-  </script>
-
-</body>
-</html>
-
+    <!-- Slide 26 - Thank You -->
+    <section data-title="Thank You">
+      <h2>🙏 Thank You!</h2>
+      <p>Thanks for attending this Excel training session.</p>
+      <p>Feel free to connect with me for further learning.</p>
+      <p><strong>Chandra Sekar Singh</strong></p>
+    </section>
