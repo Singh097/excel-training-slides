@@ -6,8 +6,8 @@
   <title>Excel Training — From Basics to Advanced</title>
 
   <!-- Reveal.js CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme" />
 
   <style>
     /* --- Base / Dark Theme --- */
@@ -19,96 +19,96 @@
     }
 
     body {
-      margin: 0;
       background: #0b0d10;
       color: #eef2f6;
       font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+      margin: 0;
       display: flex;
       height: 100vh;
       overflow: hidden;
     }
 
-    /* Sidebar */
-    #sidebar {
+    /* Left Nav */
+    #side-nav {
+      background: #121417;
+      color: #cbd5e1;
       width: 280px;
-      background: #111419;
-      border-right: 1px solid #222831;
-      color: #eef2f6;
+      overflow-y: auto;
+      padding: 12px 16px;
+      box-sizing: border-box;
+      border-right: 1px solid #1e2229;
+      transition: transform 0.3s ease;
+      font-size: 0.95rem;
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease;
-      z-index: 9999;
     }
-    #sidebar.collapsed {
+
+    #side-nav.collapsed {
       transform: translateX(-280px);
     }
 
-    #sidebar header {
-      font-weight: 700;
-      font-size: 1.2rem;
-      padding: 12px 20px;
-      border-bottom: 1px solid #222831;
-      background: #0c1016;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    #sidebar header button#toggleSidebar {
-      background: none;
+    #nav-toggle {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--accent);
       border: none;
-      color: var(--accent);
-      font-size: 1.3rem;
+      border-radius: 4px;
+      padding: 6px 8px;
       cursor: pointer;
-      user-select: none;
+      color: #0b0d10;
+      font-weight: bold;
+      z-index: 1000;
     }
 
-    #sidebar input#searchSlides {
-      margin: 10px 20px;
-      padding: 6px 10px;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: none;
-      outline: none;
-      background: #1a1f29;
-      color: #eef2f6;
-      box-shadow: inset 0 0 5px #000;
-    }
-
-    #sidebar ul#slideList {
-      flex-grow: 1;
-      overflow-y: auto;
-      margin: 0;
-      padding: 0 10px 10px 10px;
-      list-style: none;
-    }
-
-    #sidebar ul#slideList li {
-      padding: 10px 14px;
+    #search-box {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 12px;
       border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      background: #1e2229;
+      color: #eef2f6;
+    }
+    #search-box::placeholder {
+      color: #7f8fa4;
+    }
+
+    #slide-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+    }
+    #slide-list li {
+      padding: 8px 10px;
+      border-radius: 4px;
       margin-bottom: 4px;
       cursor: pointer;
-      font-size: 0.95rem;
-      line-height: 1.3;
-      border-left: 4px solid transparent;
-      transition: background-color 0.2s ease, border-color 0.3s ease;
+      color: #a0cfff;
+      user-select: none;
+      transition: background-color 0.15s ease;
     }
-    #sidebar ul#slideList li:hover {
-      background: #222831;
-      border-left-color: var(--accent);
+    #slide-list li:hover {
+      background-color: rgba(0, 212, 255, 0.15);
+      color: var(--accent);
     }
-    #sidebar ul#slideList li.active {
-      background: var(--accent);
+    #slide-list li.active {
+      background-color: var(--accent);
       color: #0b0d10;
-      border-left-color: var(--accent);
-      font-weight: 700;
+      font-weight: bold;
     }
 
-    /* Reveal container fills rest of screen */
+    /* Main Reveal container fills remaining space */
     .reveal {
       flex-grow: 1;
       height: 100vh;
-      overflow: hidden;
+    }
+
+    /* Reveal.js overrides */
+    .reveal .slides section {
+      color: #eef2f6;
     }
 
     /* Title slide background */
@@ -222,31 +222,35 @@
 
     /* Responsive: reduce list size on small screens */
     @media (max-width: 720px) {
-      h1 { font-size: 1.6rem; }
-      h2 { font-size: 1.4rem; }
-      ul li { font-size: 0.98rem; padding: 8px; }
-      .illustration { max-width: 96%; }
+      #side-nav {
+        position: absolute;
+        height: 100vh;
+        z-index: 1100;
+        top: 0;
+        left: 0;
+      }
+      .reveal {
+        height: 100vh;
+      }
     }
   </style>
 </head>
 <body>
 
-<!-- Sidebar with toggle and search -->
-<nav id="sidebar">
-  <header>
-    <span>Slides</span>
-    <button id="toggleSidebar" aria-label="Toggle sidebar">&#9776;</button>
-  </header>
-  <input type="text" id="searchSlides" placeholder="Search slides..." aria-label="Search slides" />
-  <ul id="slideList" role="list"></ul>
+<button id="nav-toggle">☰</button>
+
+<nav id="side-nav">
+  <input type="search" id="search-box" placeholder="Search slides..." aria-label="Search slides" />
+  <ul id="slide-list" role="listbox" aria-label="Slide navigation">
+    <!-- JS will populate slide titles here -->
+  </ul>
 </nav>
 
-<!-- Reveal.js presentation -->
 <div class="reveal">
   <div class="slides">
 
     <!-- Slide 1 - Title -->
-    <section class="title-slide" data-title="Excel Training — From Basics to Advanced">
+    <section data-title="Excel Training — From Basics to Advanced" class="title-slide">
       <h1>📊 Excel Training — From Basics to Advanced</h1>
       <p class="muted">Master Excel Skills for Data Management, Analysis, and Automation</p>
       <p style="margin-top:10px"><strong>Trainer:</strong> Chandra Sekar Singh</p>
@@ -272,7 +276,7 @@
     </section>
 
     <!-- Slide 3 - Section 1 -->
-    <section data-title="Section 1 — Basics of Excel">
+    <section data-title="Basics of Excel">
       <h2>🟢 SECTION 1 — BASICS OF EXCEL</h2>
       <h3>📘 Data Entry • Formatting • Essential Functions</h3>
     </section>
@@ -321,7 +325,7 @@
         <li class="fragment">Data Validation (dropdown lists)</li>
       </ul>
 
-      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?spreadsheet" alt="spreadsheet example (open-source)">
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?spreadsheet" alt="spreadsheet example (open-source)" />
 
       <div class="example fragment">
         <span class="label">Example — Data Validation</span>
@@ -330,7 +334,7 @@
     </section>
 
     <!-- Slide 7 - Section 2 header -->
-    <section data-title="Section 2 — Intermediate Excel">
+    <section data-title="Intermediate Excel">
       <h2>🟡 SECTION 2 — INTERMEDIATE EXCEL</h2>
       <h3>🧩 Formulas • Charts • PivotTables</h3>
     </section>
@@ -374,7 +378,7 @@
         <li class="fragment">Use conditional formatting for quick visuals</li>
       </ul>
 
-      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?chart,graph" alt="chart example (open-source)">
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?chart,graph" alt="chart example (open-source)" />
 
       <div class="example fragment">
         <span class="label">Quick example</span>
@@ -391,7 +395,7 @@
         <li class="fragment">Create PivotCharts for visualization</li>
       </ul>
 
-      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?pivot,table,excel" alt="pivot table example (open-source)">
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?pivot,table,excel" alt="pivot table example (open-source)" />
 
       <div class="example fragment">
         <span class="label">Example</span>
@@ -400,12 +404,12 @@
     </section>
 
     <!-- Slide 11 - Section 3 -->
-    <section data-title="Section 3 — Advanced Excel">
+    <section data-title="Advanced Excel">
       <h2>🔵 SECTION 3 — ADVANCED EXCEL</h2>
       <h3>🧠 Power Formulas • Macros • Automation</h3>
     </section>
 
-        <!-- Slide 12 - Advanced Formulas -->
+    <!-- Slide 12 - Advanced Formulas -->
     <section data-title="Advanced Formulas">
       <h2>🧠 Advanced Formulas</h2>
       <ul>
@@ -421,20 +425,17 @@
       </div>
     </section>
 
-    <!-- Slide 13 - Macros & VBA Basics -->
+        <!-- Slide 13 - Macros & VBA Basics -->
     <section data-title="Macros & VBA Basics">
       <h2>🤖 Macros & VBA Basics</h2>
       <ul>
-        <li class="fragment">Record Macros for repetitive tasks</li>
+        <li class="fragment">Record macros to automate repetitive tasks</li>
         <li class="fragment">Basic VBA editor introduction</li>
-        <li class="fragment">Writing simple scripts to automate</li>
+        <li class="fragment">Editing recorded macros</li>
       </ul>
       <div class="example fragment">
-        <span class="label">Example Macro</span>
-        <pre><code>Sub HelloWorld()
-  MsgBox "Hello, Excel!"
-End Sub
-        </code></pre>
+        <span class="label">Quick tip</span>
+        Use <kbd>Alt</kbd> + <kbd>F11</kbd> to open VBA Editor.
       </div>
     </section>
 
@@ -442,140 +443,208 @@ End Sub
     <section data-title="Power Query & Data Analysis">
       <h2>🔍 Power Query & Data Analysis</h2>
       <ul>
-        <li class="fragment">Import & transform data from multiple sources</li>
-        <li class="fragment">Clean & shape data easily</li>
-        <li class="fragment">Automate refresh of data models</li>
+        <li class="fragment">Import & clean data with Power Query</li>
+        <li class="fragment">Merge, transform, and shape datasets</li>
+        <li class="fragment">Refresh data connections easily</li>
       </ul>
-      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?data,analysis" alt="data analysis illustration">
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?data,analysis" alt="data analysis" />
     </section>
 
     <!-- Slide 15 - Tips & Shortcuts -->
     <section data-title="Tips & Shortcuts">
       <h2>💡 Tips & Shortcuts</h2>
       <ul>
-        <li class="fragment"><kbd>Ctrl + C</kbd>, <kbd>Ctrl + V</kbd> — Copy/Paste</li>
-        <li class="fragment"><kbd>Ctrl + Z</kbd> — Undo</li>
-        <li class="fragment"><kbd>Ctrl + Arrow Keys</kbd> — Navigate quickly</li>
-        <li class="fragment"><kbd>Ctrl + Shift + L</kbd> — Toggle filters</li>
-        <li class="fragment"><kbd>F4</kbd> — Repeat last action / toggle absolute refs</li>
+        <li class="fragment">Use <kbd>Ctrl</kbd> + <kbd>Z</kbd> to Undo and <kbd>Ctrl</kbd> + <kbd>Y</kbd> to Redo</li>
+        <li class="fragment">Quickly select entire row/column with <kbd>Shift</kbd> + <kbd>Space</kbd> / <kbd>Ctrl</kbd> + <kbd>Space</kbd></li>
+        <li class="fragment">Freeze Panes to lock headers while scrolling</li>
+        <li class="fragment">Use <kbd>F4</kbd> to repeat last action</li>
       </ul>
     </section>
 
-    <!-- Slide 16 - Excel Table Feature -->
-    <section data-title="Excel Table Feature">
-      <h2>📋 Excel Table Feature</h2>
-      <ul>
-        <li class="fragment">Convert range to Table for structured references</li>
-        <li class="fragment">Automatic filtering and sorting</li>
-        <li class="fragment">Dynamic ranges with formulas</li>
-      </ul>
-      <div class="example fragment">
-        <span class="label">Create Table</span>
-        Select range → <kbd>Ctrl + T</kbd> → Check 'My table has headers'
-      </div>
-    </section>
-
-    <!-- Slide 17 - Conditional Formatting -->
+    <!-- Slide 16 - Conditional Formatting -->
     <section data-title="Conditional Formatting">
       <h2>🎨 Conditional Formatting</h2>
       <ul>
-        <li class="fragment">Highlight cells based on rules</li>
-        <li class="fragment">Use color scales and icon sets</li>
-        <li class="fragment">Custom formulas for advanced conditions</li>
+        <li class="fragment">Highlight cells based on conditions</li>
+        <li class="fragment">Data bars, color scales, icon sets</li>
+        <li class="fragment">Custom formulas for formatting rules</li>
       </ul>
       <div class="example fragment">
-        <span class="label">Example Rule</span>
-        Highlight cells > 100 with red fill.
+        Highlight all sales above 1000 with a green fill.
       </div>
     </section>
 
-    <!-- Slide 18 - Data Validation -->
+    <!-- Slide 17 - Data Validation -->
     <section data-title="Data Validation">
       <h2>✅ Data Validation</h2>
       <ul>
-        <li class="fragment">Restrict entries with drop-down lists</li>
-        <li class="fragment">Input messages & error alerts</li>
-        <li class="fragment">Ensure data consistency</li>
+        <li class="fragment">Create dropdown lists</li>
+        <li class="fragment">Restrict input values</li>
+        <li class="fragment">Show input messages & error alerts</li>
+      </ul>
+    </section>
+
+    <!-- Slide 18 - Using Tables -->
+    <section data-title="Using Tables">
+      <h2>📋 Using Tables</h2>
+      <ul>
+        <li class="fragment">Convert data ranges to Tables</li>
+        <li class="fragment">Easy sorting & filtering</li>
+        <li class="fragment">Structured references in formulas</li>
+      </ul>
+    </section>
+
+    <!-- Slide 19 - Collaboration -->
+    <section data-title="Collaboration">
+      <h2>🤝 Collaboration</h2>
+      <ul>
+        <li class="fragment">Share workbooks and track changes</li>
+        <li class="fragment">Comments and notes</li>
+        <li class="fragment">Co-authoring in real-time</li>
+      </ul>
+    </section>
+
+    <!-- Slide 20 - Importing & Exporting -->
+    <section data-title="Importing & Exporting">
+      <h2>📥 Importing & Exporting Data</h2>
+      <ul>
+        <li class="fragment">Import CSV, TXT, XML files</li>
+        <li class="fragment">Export to PDF, CSV, or other formats</li>
+        <li class="fragment">Use Power Query for advanced import</li>
+      </ul>
+    </section>
+
+    <!-- Slide 21 - Dashboard Creation -->
+    <section data-title="Dashboard Creation">
+      <h2>📊 Dashboard Creation</h2>
+      <ul>
+        <li class="fragment">Combine charts and tables</li>
+        <li class="fragment">Use slicers and timelines</li>
+        <li class="fragment">Design interactive dashboards</li>
+      </ul>
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?dashboard" alt="dashboard" />
+    </section>
+
+    <!-- Slide 22 - Power Pivot -->
+    <section data-title="Power Pivot">
+      <h2>⚡ Power Pivot</h2>
+      <ul>
+        <li class="fragment">Work with large datasets</li>
+        <li class="fragment">Create relationships between tables</li>
+        <li class="fragment">DAX formulas basics</li>
+      </ul>
+    </section>
+
+    <!-- Slide 23 - Error Handling -->
+    <section data-title="Error Handling">
+      <h2>⚠️ Error Handling</h2>
+      <ul>
+        <li class="fragment">Common error types (#DIV/0!, #N/A)</li>
+        <li class="fragment">Use IFERROR to handle errors gracefully</li>
+        <li class="fragment">Debug formulas step-by-step</li>
       </ul>
       <div class="example fragment">
-        <span class="label">Example</span>
-        Allow only dates between 1 Jan 2020 and 31 Dec 2020.
+        <code class="formula">=IFERROR(A1/B1, "Check inputs")</code>
       </div>
     </section>
 
-    <!-- Slide 19 - Protecting Worksheets -->
-    <section data-title="Protecting Worksheets">
-      <h2>🔒 Protecting Worksheets</h2>
+    <!-- Slide 24 - Useful Add-ins -->
+    <section data-title="Useful Add-ins">
+      <h2>🔌 Useful Add-ins</h2>
       <ul>
-        <li class="fragment">Lock cells to prevent editing</li>
-        <li class="fragment">Protect sheet with password</li>
-        <li class="fragment">Allow certain actions despite protection</li>
+        <li class="fragment">Power Query & Power Pivot</li>
+        <li class="fragment">Analysis ToolPak</li>
+        <li class="fragment">Third-party add-ins for extra functionality</li>
       </ul>
     </section>
 
-    <!-- Slide 20 - Collaboration Features -->
-    <section data-title="Collaboration Features">
-      <h2>🤝 Collaboration Features</h2>
+    <!-- Slide 25 - Resources -->
+    <section data-title="Resources">
+      <h2>📚 Resources</h2>
       <ul>
-        <li class="fragment">Comments and Notes</li>
-        <li class="fragment">Track changes and version history</li>
-        <li class="fragment">Share workbook with others</li>
+        <li class="fragment">Microsoft official documentation</li>
+        <li class="fragment">YouTube tutorials and courses</li>
+        <li class="fragment">Excel forums and communities</li>
       </ul>
-    </section>
-
-    <!-- Slide 21 - Printing and Page Setup -->
-    <section data-title="Printing and Page Setup">
-      <h2>🖨 Printing and Page Setup</h2>
-      <ul>
-        <li class="fragment">Set print area and print titles</li>
-        <li class="fragment">Adjust margins and orientation</li>
-        <li class="fragment">Preview before printing</li>
-      </ul>
-    </section>
-
-    <!-- Slide 22 - Keyboard Shortcuts Summary -->
-    <section data-title="Keyboard Shortcuts Summary">
-      <h2>⌨️ Keyboard Shortcuts Summary</h2>
-      <ul>
-        <li class="fragment"><kbd>Ctrl + N</kbd> — New workbook</li>
-        <li class="fragment"><kbd>Ctrl + O</kbd> — Open workbook</li>
-        <li class="fragment"><kbd>Ctrl + P</kbd> — Print</li>
-        <li class="fragment"><kbd>Ctrl + F</kbd> — Find</li>
-        <li class="fragment"><kbd>Alt + =</kbd> — AutoSum</li>
-      </ul>
-    </section>
-
-    <!-- Slide 23 - Useful Excel Add-ins -->
-    <section data-title="Useful Excel Add-ins">
-      <h2>🔌 Useful Excel Add-ins</h2>
-      <ul>
-        <li class="fragment">Power Pivot for advanced data models</li>
-        <li class="fragment">Analysis ToolPak for statistical analysis</li>
-        <li class="fragment">Solver for optimization problems</li>
-      </ul>
-    </section>
-
-    <!-- Slide 24 - Learning Resources -->
-    <section data-title="Learning Resources">
-      <h2>📚 Learning Resources</h2>
-      <ul>
-        <li class="fragment">Microsoft official tutorials & docs</li>
-        <li class="fragment">YouTube channels: ExcelIsFun, Leila Gharani</li>
-        <li class="fragment">Online courses: Coursera, Udemy</li>
-        <li class="fragment">Practice with real datasets</li>
-      </ul>
-    </section>
-
-    <!-- Slide 25 - Q&A -->
-    <section data-title="Q&A">
-      <h2>❓ Questions & Answers</h2>
-      <p>Feel free to ask any questions or clarifications about Excel.</p>
     </section>
 
     <!-- Slide 26 - Thank You -->
     <section data-title="Thank You">
       <h2>🙏 Thank You!</h2>
-      <p>Thanks for attending this Excel training session.</p>
-      <p>Feel free to connect with me for further learning.</p>
-      <p><strong>Chandra Sekar Singh</strong></p>
+      <p>Questions? Reach out via email: <a href="mailto:chandrasekar@example.com" style="color:#00d4ff;">chandrasekar@example.com</a></p>
+      <p>Happy Excelling! 🚀</p>
     </section>
+
+  </div>
+</div>
+
+<!-- Reveal.js Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+
+<script>
+  // Initialize Reveal.js
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    navigationMode: 'linear',
+    transition: 'fade',
+    backgroundTransition: 'slide',
+    dependencies: [
+      { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/notes/notes.js', async: true }
+    ]
+  });
+
+  // Get slide titles and build navigation list
+  const slideList = document.getElementById('slide-list');
+  const slides = document.querySelectorAll('.reveal .slides section');
+
+  slides.forEach((slide, index) => {
+    const title = slide.getAttribute('data-title') || `Slide ${index + 1}`;
+    const li = document.createElement('li');
+    li.textContent = title;
+    li.setAttribute('role', 'option');
+    li.dataset.index = index;
+
+    li.addEventListener('click', () => {
+      Reveal.slide(index);
+    });
+
+    slideList.appendChild(li);
+  });
+
+  // Highlight current slide in nav
+  function highlightCurrentSlide(index) {
+    document.querySelectorAll('#slide-list li').forEach((li) => {
+      li.classList.toggle('active', li.dataset.index == index);
+    });
+  }
+
+  Reveal.on('slidechanged', event => {
+    highlightCurrentSlide(event.indexh);
+  });
+
+  // Highlight on initial load
+  highlightCurrentSlide(Reveal.getIndices().h);
+
+  // Search box filtering
+  const searchBox = document.getElementById('search-box');
+  searchBox.addEventListener('input', () => {
+    const filter = searchBox.value.toLowerCase();
+    document.querySelectorAll('#slide-list li').forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.style.display = text.includes(filter) ? '' : 'none';
+    });
+  });
+
+  // Collapsible nav toggle
+  const nav = document.getElementById('side-nav');
+  const toggleBtn = document.getElementById('nav-toggle');
+
+  toggleBtn.addEventListener('click', () => {
+    nav.classList.toggle('collapsed');
+  });
+</script>
+
+</body>
+</html>
+
