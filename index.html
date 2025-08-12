@@ -277,8 +277,156 @@
         <p class="muted">We’ll explore each with examples and small visuals.</p>
       </section>
 
-      <!-- Additional slides ... put all your 26 slides here ... -->
-      <!-- For brevity, I am only showing first 2 slides here, but you should include all slides as you have -->
+      <!-- Slide 3 - Section 1 -->
+    <section data-title="Basics of Excel">
+      <h2>🟢 SECTION 1 — BASICS OF EXCEL</h2>
+      <h3>📘 Data Entry • Formatting • Essential Functions</h3>
+    </section>
+
+    <!-- Slide 4 - Introduction to Excel -->
+    <section data-title="Introduction to Excel">
+      <h2>📘 Introduction to Excel</h2>
+      <ul>
+        <li class="fragment"><strong>What is Excel?</strong> — Spreadsheet software to store, organize & analyze data.</li>
+        <li class="fragment"><strong>Workbook & Worksheet</strong> — Files & sheets.</li>
+        <li class="fragment"><strong>Cells & Formula Bar</strong> — Where you type values and formulas.</li>
+      </ul>
+      <p class="example fragment">
+        <span class="label">Quick tip</span>
+        <code class="formula">Ctrl + S</code> Save frequently. <span class="muted"> (Windows)</span>
+      </p>
+    </section>
+
+    <!-- Slide 5 - Basic Functions & Formatting -->
+    <section data-title="Basic Functions & Formatting">
+      <h2>✏️ Basic Functions & Formatting</h2>
+      <ul>
+        <li class="fragment">Data entry: click cell → type → <kbd>Enter</kbd></li>
+        <li class="fragment">Formatting: fonts, borders, fill.</li>
+        <li class="fragment">Number formats: Currency / Percentage / Date</li>
+      </ul>
+
+      <div class="fragment example">
+        <span class="label">Example — SUM / AVERAGE / MIN / MAX</span>
+        <div style="margin-bottom:6px; font-size:0.95rem;">
+          Values in A1:A5 = [10, 20, 30, 40, 50]
+        </div>
+        <div><code class="formula">=SUM(A1:A5)</code> → <span class="result">150</span></div>
+        <div><code class="formula">=AVERAGE(A1:A5)</code> → <span class="result">30</span></div>
+        <div><code class="formula">=MIN(A1:A5)</code> → <span class="result">10</span> · <code class="formula">=MAX(A1:A5)</code> → <span class="result">50</span></div>
+      </div>
+    </section>
+
+    <!-- Slide 6 - Data Management Tools -->
+    <section data-title="Data Management Tools">
+      <h2>🗂 Data Management Tools</h2>
+      <ul>
+        <li class="fragment">Sort (A→Z / Z→A)</li>
+        <li class="fragment">Filter (dropdowns)</li>
+        <li class="fragment">Find & Replace (<kbd>Ctrl</kbd> + <kbd>H</kbd>)</li>
+        <li class="fragment">Data Validation (dropdown lists)</li>
+      </ul>
+
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?spreadsheet" alt="spreadsheet example (open-source)" />
+
+      <div class="example fragment">
+        <span class="label">Example — Data Validation</span>
+        Create a dropdown in cell B1 with items: <code>Red, Green, Blue</code> — choose from list.
+      </div>
+    </section>
+
+    <!-- Slide 7 - Section 2 header -->
+    <section data-title="Intermediate Excel">
+      <h2>🟡 SECTION 2 — INTERMEDIATE EXCEL</h2>
+      <h3>🧩 Formulas • Charts • PivotTables</h3>
+    </section>
+
+    <!-- Slide 8 - Intermediate Formulas -->
+    <section data-title="Intermediate Formulas">
+      <h2>🧩 Intermediate Formulas</h2>
+      <ul>
+        <li class="fragment"><strong>Text functions</strong> — LEFT, RIGHT, MID</li>
+        <li class="fragment"><strong>Logical</strong> — IF</li>
+        <li class="fragment"><strong>Lookup</strong> — VLOOKUP, XLOOKUP</li>
+      </ul>
+
+      <div class="example fragment">
+        <span class="label">Text examples</span>
+        <div><code class="formula">=LEFT("Revenue",4)</code> → <span class="result">"Reve"</span></div>
+        <div><code class="formula">=RIGHT("Revenue",3)</code> → <span class="result">"nue"</span></div>
+        <div><code class="formula">=MID("Dataset",3,4)</code> → <span class="result">"tase"</span></div>
+      </div>
+
+      <div class="example fragment" style="margin-top:10px;">
+        <span class="label">Logical example</span>
+        <div>With A2 = 120: <code class="formula">=IF(A2>100,"Pass","Fail")</code> → <span class="result">"Pass"</span></div>
+      </div>
+
+      <div class="example fragment" style="margin-top:10px;">
+        <span class="label">Lookup examples (small table)</span>
+        <div style="margin-bottom:6px">Table A2:B4 — Apple:10, Banana:20, Cherry:30</div>
+        <div><code class="formula">=VLOOKUP("Banana",A2:B4,2,FALSE)</code> → <span class="result">20</span></div>
+        <div><code class="formula">=XLOOKUP("Cherry",A2:A4,B2:B4)</code> → <span class="result">30</span></div>
+        <div><code class="formula">=INDEX(B2:B4, MATCH("Apple",A2:A4,0))</code> → <span class="result">10</span></div>
+      </div>
+    </section>
+
+    <!-- Slide 9 - Charts & Visualization -->
+    <section data-title="Charts & Visualization">
+      <h2>📊 Charts & Visualization</h2>
+      <ul>
+        <li class="fragment">Select data → Insert chart</li>
+        <li class="fragment">Format titles, axes, labels</li>
+        <li class="fragment">Use conditional formatting for quick visuals</li>
+      </ul>
+
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?chart,graph" alt="chart example (open-source)" />
+
+      <div class="example fragment">
+        <span class="label">Quick example</span>
+        Data: Sales Jan–May = [120, 150, 110, 180, 210] → Insert a column chart to show trend.
+      </div>
+    </section>
+
+    <!-- Slide 10 - PivotTables -->
+    <section data-title="PivotTables & PivotCharts">
+      <h2>📈 PivotTables & PivotCharts</h2>
+      <ul>
+        <li class="fragment">Insert → PivotTable</li>
+        <li class="fragment">Drag fields → Rows / Columns / Values / Filters</li>
+        <li class="fragment">Create PivotCharts for visualization</li>
+      </ul>
+
+      <img class="illustration fragment" src="https://source.unsplash.com/800x450/?pivot,table,excel" alt="pivot table example (open-source)" />
+
+      <div class="example fragment">
+        <span class="label">Example</span>
+        Using a sales table, put Product in Rows, Month in Columns and Sum of Sales in Values → get quick monthly totals by product.
+      </div>
+    </section>
+
+    <!-- Slide 11 - Section 3 -->
+    <section data-title="Advanced Excel">
+      <h2>🔵 SECTION 3 — ADVANCED EXCEL</h2>
+      <h3>🧠 Power Formulas • Macros • Automation</h3>
+    </section>
+
+      <!-- Slide 12 - Advanced Formulas -->
+    <section data-title="Advanced Formulas">
+      <h2>🧠 Advanced Formulas</h2>
+      <ul>
+        <li class="fragment">INDEX & MATCH for flexible lookups</li>
+        <li class="fragment">INDIRECT & OFFSET for dynamic references</li>
+        <li class="fragment">Array formulas for multi-cell calculations</li>
+      </ul>
+
+      <div class="example fragment" style="margin-top:12px;">
+        <span class="label">Example — INDEX & MATCH</span>
+        <div>Find Sales for "Banana" from A2:B4</div>
+        <code class="formula">=INDEX(B2:B4, MATCH("Banana", A2:A4, 0))</code> → <span class="result">20</span>
+      </div>
+    </section>
+
 
       <!-- Slide 13 - Macros & VBA Basics -->
       <section data-title="Macros & VBA Basics">
@@ -503,3 +651,4 @@
 
 </body>
 </html>
+
