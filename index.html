@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
 
   <style>
-    /* --- Base / Dark Theme --- */
     :root {
       --accent: #00d4ff;
       --card-bg: rgba(255,255,255,0.04);
@@ -24,14 +23,28 @@
       font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
     }
 
-    /* Title slide background */
-    .title-slide {
-      background-image: url('https://cover.sli.dev');
-      background-size: cover;
-      background-position: center;
-      color: #fff;
-      text-shadow: 0 6px 18px rgba(0,0,0,0.8);
+    /* Floating circular home button */
+    #home-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 22px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: none; /* hidden until Reveal ready/slide > 0 */
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+      z-index: 9999;
+      cursor: pointer;
+      border: none;
+      transition: transform 160ms ease, box-shadow 160ms ease;
     }
+    #home-btn:active { transform: translateY(1px) scale(0.99); }
+    #home-btn:hover { box-shadow: 0 12px 28px rgba(0,0,0,0.55); }
+
+    #home-btn svg { width: 26px; height: 26px; display:block; fill: #ffffff; }
 
     /* Headings */
     h1 {
@@ -139,10 +152,20 @@
       h2 { font-size: 1.4rem; }
       ul li { font-size: 0.98rem; padding: 8px; }
       .illustration { max-width: 96%; }
+      #home-btn { width: 48px; height: 48px; right: 14px; bottom: 16px; }
+      #home-btn svg { width: 22px; height: 22px; }
     }
   </style>
 </head>
 <body>
+
+<!-- Floating SVG Home Button -->
+<button id="home-btn" aria-label="Go to Home (slide 1)" title="Go to Home (slide 1)">
+  <!-- SVG house icon -->
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M12 3.293l8 7.2V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1V10.493l8-7.2z"/>
+  </svg>
+</button>
 
 <div class="reveal">
   <div class="slides">
@@ -204,7 +227,6 @@
 
       <div class="fragment example">
         <span class="label">Example — SUM / AVERAGE / MIN / MAX</span>
-        <!-- small sample table shown inline -->
         <div style="margin-bottom:6px; font-size:0.95rem;">
           Values in A1:A5 = [10, 20, 30, 40, 50]
         </div>
@@ -498,19 +520,63 @@
       <p class="fragment">GitHub: <a href="https://github.com/Singh097" target="_blank">Singh097</a></p>
     </section>
 
+    <!-- Slide 26 - Appendix / Contact (extra slide so total = 26) -->
+    <section>
+      <h2>📎 Appendix & Contact</h2>
+      <ul>
+        <li class="fragment">Download sample files from GitHub</li>
+        <li class="fragment">Follow up: Q&A session / Office hours</li>
+      </ul>
+      <p class="muted fragment">Email: <a href="mailto:singhsekar097@gmail.com">singhsekar097@gmail.com</a></p>
+      <p class="muted fragment">GitHub: <a href="https://github.com/Singh097" target="_blank">Singh097</a></p>
+    </section>
+
   </div>
 </div>
 
 <!-- Reveal.js -->
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
 <script>
+  // Initialize Reveal
   Reveal.initialize({
     hash: true,
     slideNumber: true,
-    transition: 'fade',      // soft fade transitions
+    transition: 'fade',
     backgroundTransition: 'fade',
     fragments: true
   });
+
+  // Home button logic
+  const homeBtn = document.getElementById('home-btn');
+
+  function updateHomeVisibility() {
+    // getIndices().h returns horizontal index (0-based)
+    const idx = Reveal.getIndices ? Reveal.getIndices().h : 0;
+    if (idx === 0) {
+      homeBtn.style.display = 'none';
+    } else {
+      homeBtn.style.display = 'flex';
+    }
+  }
+
+  // Ensure button will work after Reveal is ready
+  Reveal.on('ready', function() {
+    updateHomeVisibility();
+  });
+
+  // Update on each slide change
+  Reveal.on('slidechanged', function() {
+    updateHomeVisibility();
+  });
+
+  // Click handler goes to slide 0 (first slide)
+  homeBtn.addEventListener('click', function(e) {
+    // go to first slide (horizontal index 0)
+    Reveal.slide(0);
+  });
+
+  // Safety: if Reveal isn't ready yet, show button hidden by default
+  // (updateHomeVisibility will run on ready)
 </script>
 
 </body>
